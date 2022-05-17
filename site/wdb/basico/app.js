@@ -272,6 +272,24 @@ const fitBitData = {
     avgGoodSleep        :'2:13'
 };
 
+
+/**
+ * IMPORTANTE quando comparamos objetos ou arrays, se criamos dois objetos ou arrays
+ * iguais na comparação sempre vai dar false. 
+ * Agora se copiamos um objeto ou array para outro objeto ou array
+ * na comparação vai ser true.
+ * Exemplo
+ */
+const person1 = {name: 'Max'};
+const person2 = {name: 'Max'};
+console.log(person1 == person2);//false
+//Agora copiando vai dar true
+const person3 = person2;
+console.log(person3 == person2);//true
+//o mesmo vale para arrays
+
+
+
 //Acessar os valores
 console.log(`Total Steps é ${fitBitData.totalSteps}.`);
 console.log(`A primeira tag é: ${fitBitData.tags[0]}.`);
