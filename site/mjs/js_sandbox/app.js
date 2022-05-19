@@ -345,3 +345,33 @@ const people = [
 for(let i = 0; i < people.length; i++){
   console.log(people[i].name);
 }
+
+// Data data é um objeto
+const today = new Date();
+let birthDay = new Date('9-10-1981 11:25:00');
+birthDay = new Date('September 10 1981');
+birthDay = new Date('9/10/1981');
+//Retorna o mês
+val = today.getMonth();//zero based então janeiro retorna 0
+//Retorna o dia
+val = today.getDate();
+//Retorna o dia da semana
+val = today.getDay();
+//Retorna o ano
+val = today.getFullYear();
+//Retorna a hora
+val = today.getHours();
+//Rttorna minutos
+val = today.getMinutes();
+//Retorna miliseconds
+val = today.getMilliseconds();
+//Retirna timestamp 
+val = today.getTime();
+
+birthDay.setMonth(2);//altera o mês
+birthDay.setDate(12);//altera o dia
+birthDay.setFullYear(1985);//altera o ano
+birthDay.setHours(3);//altera a hora
+birthDay.setMinutes(30);//altera o minuto
+birthDay.setSeconds(25);//altera o segundo
+console.log(birthDay);
