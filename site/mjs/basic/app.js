@@ -375,3 +375,194 @@ birthDay.setHours(3);//altera a hora
 birthDay.setMinutes(30);//altera o minuto
 birthDay.setSeconds(25);//altera o segundo
 console.log(birthDay);
+
+
+/**
+ * STATEMANTS
+ */
+
+// IQUAL TO VALUE & TYPE
+// No exemplo abaixo vai retornar IS NOT 100 pois id é uma string 100 e não um número
+// quando usamos === verificamos o valor e o tipo
+let id = '100';
+if(id === 100){
+  console.log('IS 100');
+} else {
+  console.log('IS NOT 100');
+}
+
+// Test if undefined
+// Verificar se uma variável possui um valor, se não está vazia, undefined
+let id2;
+if(typeof id2 !== 'undefined'){
+  console.log(`The ID is ${id2}`);
+} else {
+  console.log('NO ID');
+}
+
+// IF ELSE IF
+const color = 'red';
+if(color === 'red'){
+  console.log('Color is red');
+} else if (color === 'blue'){
+  console.log('Color is blue');
+} else {
+  console.log('Color is not red or blue');
+}
+
+// TERNARY OPERATOR IF EM UMA LINHA
+console.log(id === 100 ? 'CORRECT' : 'INCORRECT');
+
+// SWITCH
+const color2 = 'red';
+switch(color2){
+  case 'red':
+    console.log('Color is red');
+    break;
+  case 'blue':
+    console.log('Color is blue');
+    break;
+  default:
+    console.log('Color is not red or blue');
+    break;
+}
+
+
+// Bet the day of the week
+let day;
+switch(new Date().getDay()){
+  case 0:
+    day = 'Sunday';
+    break;
+  case 1:
+    day = 'Monday';
+    break;
+  case 2:
+    day = 'Tuesday';
+    break;
+  case 3:
+    day = 'Wednesday';
+    break;
+  case 4:
+    day = 'Thursday';
+    break;
+  case 5:
+    day = 'Friday';
+    break;
+  case 6:
+    day = 'Saturday';
+    break;
+}
+
+console.log(`Today is ${day}`);
+
+/**
+ * FUNCTIONS DECLARATIONS
+ */
+
+function greet(firstName = 'John', lastName = 'Doe'){
+  return `Hello ${firstName} ${lastName}`;
+}
+console .log(greet());
+
+// FUNCTION EXPRESSIONS
+const square = function(x){
+  return x*x;
+};
+console.log(square(8));
+
+// IMMIDIATLEY INVOKABLE FUNCTIONS - IIFEs - Função que não precisa chamar
+// é executada diretamente
+(function(){
+  console.log('IIEFE Ran..');
+})();
+
+(function(name6){
+  console.log('HELLO ' + name6);
+})('Brad');//Parâmetro
+
+// PROPERTY METHODS FUNÇÕES DENTRO DE OBJETOS
+const todo = {
+  add: function(){
+    console.log('Add todo..');
+  },
+  edit: function(id){
+    console.log(`Edit todo ${id}`);
+  }
+}
+// Add another method to an existing object
+todo.delete = function(){
+  console.log('Delete todo...');
+}
+
+todo.add();
+todo.edit(22);
+todo.delete();
+
+/**
+ * LOOPS
+ */
+
+//FOR LOOP
+for(let i = 0; i<= 10; i++){
+  if(i === 2){
+    console.log('2 is my favorite number');
+    continue;//retorna para a interação do loop for a linha console.log('Number ' + i)
+  }
+
+  if(i === 5){
+    console.log('Stop the loop');
+    break;//interrompe a interação do loop for
+  }
+  console.log('Number ' + i);
+}
+
+// WHILE LOOP
+let i = 0;
+while(i < 10){
+  console.log('Number ' + i);
+  i++;
+}
+
+//DO WHILE
+i = 100;
+do{
+  console.log('Number ' + i);
+  i++;
+} while(i < 10);
+
+
+// FOREACH
+const cars= ['Ford', 'Chevy', 'Honda', 'Toyota'];
+
+//FOR OF
+for (let car of cars) {
+  console.log(car);
+}
+
+// FORE IN WITH KEY
+for (let car in cars) {
+  console.log(`${car} : ${cars[car]}`);
+}
+
+//FOR EACH
+cars.forEach(function(car,index, array){
+  console.log(`${index} : ${car}`);
+  console.log(array);
+})
+
+
+//MAP
+const users = [
+  {id: 1, name: 'John'},
+  {id: 2, name: 'Sara'},
+  {id: 3, name: 'Keren'},
+  {id: 4, name: 'Steve'}
+];
+
+const ids = users.map(function(user){
+  return user.id;
+});
+
+console.log(ids);
+
