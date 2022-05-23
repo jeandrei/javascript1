@@ -26,13 +26,17 @@
   let tasks;
 
   if(localStorage.getItem('tasks') === null) {
+    //se não existe tasks cria o array tasks
     tasks = [];
   } else {
+    // se não pega os tasks gravados no localstorage se não vai reescrever com um array vazio
     tasks = JSON.parse(localStorage.getItem('tasks'));
   }
 
+  //coloca a nova task que vem do input no array tasks que está com todas as tasks que vem do else
   tasks.push(task);
 
+  // grava a nova task no localstorage
   localStorage.setItem('tasks', JSON.stringify(tasks));
 
   alert('Task saved');
