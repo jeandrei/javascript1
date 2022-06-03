@@ -69,7 +69,7 @@ function addTask(e){
   // Add class secondary-content nos li para ficar do lado direito no materialize
   link.className = 'delete-item secondary-content';
   // Add icon html
-  link.innerHTML = '<i class="fa fa-remove"></li>';
+  link.innerHTML = '<i class="fa fa-remove"></i>';
   // Append the link to li
   li.appendChild(link);
   //Append li to ul

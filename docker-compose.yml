@@ -37,17 +37,18 @@ services:
     restart: always
   
   phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        links: 
-            - db:db
-        container_name: phpmyadmin 
-        ports:
-            - 8000:80
-        environment:
-        #04 Troque mvc pelo nome do banco de dados do projeto
-            MYSQL_USER: database
-            MYSQL_PASSWORD: mypassword
-            MYSQL_ROOT_PASSWORD: rootadm
-            restart: always
+    image: phpmyadmin/phpmyadmin
+    links: 
+    - db:db
+    container_name: phpmyadmin 
+    ports:
+    - 8000:80
+    environment:
+    #04 Troque mvc pelo nome do banco de dados do projeto
+        MYSQL_USER: database
+        MYSQL_PASSWORD: mypassword
+        MYSQL_ROOT_PASSWORD: rootadm
+    restart: always
+    
 volumes:
     dumps:
