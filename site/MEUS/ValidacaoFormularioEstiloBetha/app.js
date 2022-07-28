@@ -1,3 +1,5 @@
+
+
 // Form Blur (when it out the input) Event Listeners
 document.getElementById('name').addEventListener('keyup', validate);
 document.getElementById('zip').addEventListener('keyup', validate);
@@ -6,6 +8,21 @@ document.getElementById('phone').addEventListener('keyup', validate);
 
 const btnSave = document.querySelector('#btnSave');
 
+
+//Função para verificar se o campo está vazio
+//Retorna true se o campo estiver vazio
+function isEmpty(val){    
+ switch (val){
+  case '':
+    return true;
+    break;
+  case null:
+    return true;
+    break;
+  default:
+    return false;
+ }
+}
 
 function validate(){
   
@@ -25,7 +42,8 @@ function validate(){
 
 function validateName(){
   const name = document.getElementById('name');
-  if(name.value != '')  {
+  //só faço a validação se o campo não estiver vazio que verifico com a função isEmpty
+  if(!isEmpty(name.value)){
       //re regular expression regex
       const re = /^[a-zA-Z]{2,10}$/;
       if(!re.test(name.value)){
@@ -40,7 +58,7 @@ function validateName(){
 
 function validateZip(){
   const zip = document.getElementById('zip');  
-  if(zip.value != ''){
+  if(!isEmpty(zip.value)){
     const re = /^[0-9]{5}?(-[0-9]{3}?)/;
     if(!re.test(zip.value)){
       zip.classList.add('is-invalid');
@@ -54,7 +72,7 @@ function validateZip(){
 
 function validateEmail(){
   const email = document.getElementById('email');
-  if(email.value != ''){
+  if(!isEmpty(email.value)){
     const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
     if(!re.test(email.value)){
       email.classList.add('is-invalid');
@@ -69,7 +87,7 @@ function validateEmail(){
 
 function validatePhone(){
   const phone = document.getElementById('phone');
-  if(phone.value != ''){
+  if(!isEmpty(phone.value)){
     const re = /^\(?\d{2}\)?[-. ]?\d{5}[-. ]?\d{4}$/;  
     if(!re.test(phone.value)){
       phone.classList.add('is-invalid');
