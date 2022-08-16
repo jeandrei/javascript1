@@ -31,6 +31,8 @@ const Chatroom = function() {
      * meu teste logo na instância do usuário foi criado brad.teste com o valor meu teste
      */ 
     register: function(user){
+      //users['jean'] = user;  
+      //user.name que vem da classe User é a chave  
       users[user.name] = user;
       user.chatroom = this; // "this" contem register e send
       user.teste = 'meu teste';
@@ -41,7 +43,9 @@ const Chatroom = function() {
         to.recieve(message, from);
       } else {
         for(key in users){
+          //users[jean]
           if(users[key] !== from){
+            //users[jean]
             users[key].recieve(message, from);
           }
         }
