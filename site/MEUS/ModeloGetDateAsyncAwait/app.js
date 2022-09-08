@@ -1,4 +1,8 @@
-/**
+
+
+const App = (function(){
+
+  /**
  * 1 Função que recebe uma url faz um fech e retorna uma nova promise
  */
 function requestData(url){
@@ -45,8 +49,6 @@ async function showData(){
   //insere no body
   document.querySelector('body').innerHTML = html;  
 }
-
-const App = (function(){
 
   return {
     // cria a função que inicia o APP
