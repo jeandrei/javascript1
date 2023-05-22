@@ -1,6 +1,6 @@
 /* apiplan4 */
 const URLAPI =
-  'https://script.google.com/macros/s/AKfycbyQ7QduYhzE4amQW7Zgqy0lEvxCy-dpYvN8mx6sxqo0mdeDA0MaEQP_0u4Xe83xkicf/exec'
+  'https://script.google.com/macros/s/AKfycbz2XKtumSA6Tggg8rAZNc3WgiGLxq66vVo036-atzzjbBr2ohtxM_a4YfI1e53ExHYG/exec'
 
 const http = new EasyHTTP()
 
