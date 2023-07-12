@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!--Bootstrap CDN-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <!-- JQUERY -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Font Awesome CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!--JAVASCRIPT BOOTSTRAP-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- ESSES DOIS SÃO NECESSÁRIOS PARA FAZER FUNCIONAR O MENU DROPDOWN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+    <style>
+      /* deixa o detalhe oculto */
+      .faq .detail {
+        display: none;
+      }
+      .faq.active .detail {
+        display: block;
+      }
+      /* deixa o detalhe oculto */
+
+      /* parte de style do botão */
+      .faq-toggle {
+        background-color: transparent;
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        padding: 0;
+        top: 30px;
+        right: 30px;
+        height: 30px;
+        width: 30px;
+      }
+
+      .faq-toggle:focus {
+        outline: 0;
+      }
+
+      .faq-toggle .fa-times {
+        display: none;
+      }
+
+      .faq.active .faq-toggle .fa-times {
+        color: #fff;
+        display: block;
+      }
+
+      .faq.active .faq-toggle .fa-chevron-down {
+        display: none;
+      }
+
+      .faq.active .faq-toggle {
+        background-color: #9fa4a8;
+      }
+      /* parte do style do botão */
+    </style>
+
+    <title>Toggle</title>
+  </head>
+
+  <body>
+    <!-- inicio classe faq tudo tem que ficar dentro da classe faq -->
+    <!-- se mudar a classe abaixo para container faq active vai aparecer o detail -->
+    <div class="container faq">
+      <!-- inicio da row principal -->
+      <div class="row align-items-center h-100 text-center">
+        <div class="col-5">Texto principal 01</div>
+        <div class="col-5">Texto principal 02</div>
+        <div class="col-2">
+          <button class="faq-toggle">
+            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- fim da row principal -->
+      <!-- inicio da detail que vai aparecer e sumir -->
+      <div class="row detail" style="background-color: yellow">
+        <div class="col-12">DETALHES</div>
+      </div>
+      <!-- fim da detail -->
+    </div>
+    <!-- fim da classe faq -->
+  </body>
+</html>
+
+<script>
+  const toggles = document.querySelectorAll('.faq-toggle')
+  toggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      /* vai fazendo parentNode até chegar na classe faq */
+      //console.log(toggle.parentNode.parentElement.parentElement)
+      toggle.parentNode.parentElement.parentElement.classList.toggle('active')
+    })
+  })
+</script>
