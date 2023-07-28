@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+       .faq .detail {
+        display: none;
+      }
+      .faq.active .detail {
+        display: block;
+      }
+</style>
+<body>
+    <div class="faq">
+        <h1>Canal de Suporte</h1>
+        <a href="https://suporte.educapenha.com.br">Suporte</a>
+        <button class="faq-toggle">Expandir</button>
+        <div class="detail">DETALHES DE FAQ 01</div>
+    </div>
+    
+    <div class="faq">
+        <h1>Canal de Suporte</h1>
+        <a href="https://suporte.educapenha.com.br">Suporte</a>
+        <button class="faq-toggle">Expandir</button>
+        <div class="detail">DETALHES DE FAQ 02</div>
+    </div>
+</body>
+</html>
+<script>
+const toggles  = document.querySelectorAll('.faq-toggle')
+toggles.forEach((toggle)=> {
+    toggle.addEventListener('click', () => {
+        toggle.parentNode.classList.toggle('active')
+    })
+})
+
+</script>
