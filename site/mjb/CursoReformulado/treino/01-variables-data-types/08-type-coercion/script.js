@@ -1,28 +1,23 @@
 let x
 
-// Coerced to a string
-x = 5 + '5'
+// Coerced to a string some o número 5 com a string '5'
 
-x = 5 + Number('5')
+// número 5 com a string '5' usando o método Number
 
-// Coerced to a number
-x = 5 * '5'
+// Coerced to a number multiplique o número 5 com a string '5'
 
-// null is coerced to 0 as it is a `falsy` value
-x = 5 + null
+// null is coerced to 0 as it is a `falsy` value some o número 5 com null
 
-x = Number(null)
+// atribua a x null com o método Number.
 
-x = Number(true)
-x = Number(false)
+// atribua a x true com o método Number.
 
-// true is coerced to a 1
-x = 5 + true
+// atribua a x false com o método Number.
 
-// false is coerced to 0 (falsy)
-x = 5 + false
+// atribua a x 5 + true
 
-// Undefined is coerced to 0 (falsy)
-x = 5 + undefined
+// false is coerced to 0 (falsy) atribua a x 5 + false
+
+// Undefined is coerced to 0 (falsy) atribua a x 5 + undefined
 
 console.log(x, typeof x)

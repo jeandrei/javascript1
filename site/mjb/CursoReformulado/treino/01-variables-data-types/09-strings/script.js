@@ -1,60 +1,60 @@
-let x;
+let x
 
-const name = 'John';
-const age = 31;
+const name = 'John'
+const age = 31
 
-// Concatenation
-x = 'Hello, my name is ' + name + ' and I am ' + age + ' years old';
+// Concatenation monte a string concatenada Hello, my name is  John and I am 31 years old
+//utilize as const name e age e atribua a x
 
-// Template Literals
-x = `Hello, my name is ${name} and I am ${age} years old`;
+// Template Literals, faça a mesma coisa acima só que com template literals
 
 // String Properties and Methods
 
 // Creating a "string object" (JS does this automatically when using a propery or method on a primitive string)
-const s = new String('Hello World');
+// crie uma const s com o valor Hello World utilizando new String()
 
-x = typeof s;
+//Atribua a x o tipo da const s
 
-x = s.length;
+//Atribua a x o tamanho da const s
 
-// Access value by key
-x = s[0];
+// Access value by key atribua a x o primeiro valor da const s
 
 // Shows the prototype of the string object. Shows the properties and methods
-x = s.__proto__;
+//atribua a x o prototype de s __proto__
 
 // Change case
-x = s.toUpperCase();
-x = s.toLowerCase();
+// Atribua a x s em letra maiúscula
+
+// Atribua a x s em letra minuscula
 
 // charAt() - returns the character at the specified index
-x = s.charAt(0);
+// atribua a x o caractere da posição do indíce 0 utilizando charAt()
 
 // indexOf - returns the index of the first occurrence of a specified value in a string
-x = s.indexOf('d');
+// atribua a x o indice da letra d da const s
 
 // substring() - search a string for a specified value
-x = s.substring(2, 5);
-x = s.substring(7);
+// atribua a x a string s da posição 2 até a 5
+
+// atribua a x a string s a partir da posição 7
 
 // slice() - extracts a part of a string and returns a new string
-x = s.slice(-11, -6);
+// atribua a x a string s a partir da posição -11 até -6
 
 // trim() - remove whitespace from beginning and end of string
-x = '         Hello World';
-x = x.trim();
+// atribua a x o constante em x sem espaços
+//x = '         Hello World'
 
 // replace() - replace all instances of a string
-x = s.replace('World', 'John');
+// substitua a palavra World por John em s utilizando replace e atribua a x
 
 // includes() - returns true if the string is found
-x = s.includes('Hell');
+// atribua a x a verificação se em s existe a palavra Hell
 
 // valueOf() - returns the primitive value of a variable
-x = s.valueOf();
+// Atribua a x o valor constante em s utilizando valueOf() vai mostrar o texto mesmo se for um objeto, se a string for iniciada com new String('Hello World') o resultado será só Hello World
 
 // split() - returns an array of strings
-x = s.split('');
+// divida a string s onde tiver um espaço em branco e atribua a x
 
-console.log(x);
+console.log(x)
