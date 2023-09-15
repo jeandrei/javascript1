@@ -1,33 +1,31 @@
 let x
-
+//Seção 02 aula 19
 const num = new Number(5)
 
 // toString() - returns a string representation of the number
-// x = transorme num em uma string
-
+x = num.toString()
 // To get the length
-// x = transforme num em uma string e passe o tamenho
+x = num.toString().length
 
 // toFixed() - returns a string representation of the number with a specified number of decimals
-//x = num com duas casas decimais
+x = num.toFixed(2)
 
 // toPrecision() - returns a number with the specified length
-// x = num com valor preciso de 3 casas decimais
+x = num.toPrecision(3)
 
 // toExponential() -  convert a number to exponential notation and return its value as a string
-// x = x toExponential valor esperado 5.00e+0
+x = num.toExponential(2)
 
 // toLocaleString() - returns a string representation of the number, using the current locale
-// x = num texto no formato en-US teste também com ar-EG que é do egito para você entender
+x = num.toLocaleString('en-US')
 
 // valueOf - Get value
-// x = ao valor que consta em num
+x = num.valueOf()
 
 // The Number object itself has some properties and methods
 
 // Largest and smallest possible number
-// x = maior número possível
-
-// x = menor número possível
+x = Number.MAX_VALUE
+x = Number.MIN_VALUE
 
 console.log(x)

@@ -1,33 +1,35 @@
-let x;
+let x
 
-// Square root
-x = Math.sqrt(9);
+//OBS.: Todos os exercícios estão dentro da função Math
+// Square root raíz quadrada
+// x = raíz quadrada de 9
 
-// Absolute value
-x = Math.abs(-5);
+// Absolute value valor absoluto
+// x = valor absoluto de -5
 
-// Round
-x = Math.round(4.2);
+// Round arredonda o número
+// x = número arredondado 4.2
 
-// Round up
-x = Math.ceil(4.2);
+// Round up Arredonda o número para cima
+// x = número arredondado para cima 4.2
 
-// Round down
-x = Math.floor(4.9);
+// Round down Arredonda para baixo
+// x = número arredondado para baixo
 
-// Exponent
-x = Math.pow(2, 3);
+// Exponent número elevado ao expoente
+// x = 2 elevado a 3
 
-// Minimum number
-x = Math.min(4, 5, 3);
+// Minimum number. mínimo número entre um intervalo
+// x = mínimo entre 4, 5, 3
 
-// Maximum number
-x = Math.max(4, 5, 3);
+// Maximum number. maior número entre um intervalo
+// x = maior entre 4, 5, 3
 
 // Get a random number/decimal between 0 and 1
-x = Math.random();
+// x = número randômico entre 0 e 1
 
 // Get a random number between 1 and 100
-x = Math.floor(Math.random() * 100 + 1);
+// retorne um número randomico entre 0 e 100
+// x = formula é arredondar um número para baixo de um número entre 0 e 1 * 100 +1
 
-console.log(x);
+console.log(x)

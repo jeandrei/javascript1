@@ -1,41 +1,40 @@
-let x;
-let d = new Date();
+let x
+let d = new Date()
 
 // Date methods
 
-x = d.toString();
+// x = d convertida em string vai retornar o string da data
 
-x = d.getTime();
-x = d.valueOf();
+// x = d em time
 
-x = d.getFullYear();
+//x = o valor de d
 
-x = d.getMonth();
-x = d.getMonth() + 1;
+//x = o ano completo de d
 
-x = d.getDate();
+//x = o mês de d e o mês de d + 1
 
-x = d.getDay();
+//x = a o dia de d aqui é getDate
 
-x = d.getHours();
+//x = o dia da semana de d aqui é getDay
 
-x = d.getMinutes();
+//x = a hora de d
 
-x = d.getSeconds();
+//x = os minutos de d
 
-x = d.getMilliseconds();
+//x = os segundos de d
 
-x = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+//x = os milliseconds de d
+
+//x = o ano o mês e a data de d com backtics${d.getDate()}`
 
 // Intl.DateTimeFormat API (locale specific)
-x = Intl.DateTimeFormat('en-US').format(d);
-x = Intl.DateTimeFormat('en-GB').format(d);
-x = Intl.DateTimeFormat('default').format(d);
+// x = Intl.DateTimeFormat d com a data formatada en-US, en-GB e default
 
-x = Intl.DateTimeFormat('default', { month: 'long' }).format(d);
+//x = Intl.DateTimeFormat imprimindo o mês em long format exemplo October
 
-x = d.toLocaleString('default', { month: 'short' });
+//x = d toLocaleString default com o mês no formato short
 
+/* exemplo mais completo da data usando toLocaleString
 x = d.toLocaleString('default', {
   weekday: 'long',
   year: 'numeric',
@@ -45,6 +44,6 @@ x = d.toLocaleString('default', {
   minute: 'numeric',
   second: 'numeric',
   timeZone: 'America/New_York',
-});
+})*/
 
-console.log(x);
+console.log(x)
