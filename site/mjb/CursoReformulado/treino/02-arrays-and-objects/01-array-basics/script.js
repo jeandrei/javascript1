@@ -1,32 +1,28 @@
-let x;
+let x
 
 // Array Literal
-const numbers = [12, 45, 33, 29, 39, 102];
-const mixed = [12, 'Hello', true, null];
+// crie uma const numbers array literal com os valores 12, 45, 33, 29, 39, 102
+
+// crie uma const mixed array literal com os valores 12, 'Hello', true, null
 
 // Array Constructor
-const fruits = new Array('apple', 'grape', 'orange');
+// crie um array constructor fruits com os valores 'apple', 'grape', 'orange'
 
-// Get value by index
-x = numbers[0];
+// Get value by index x = numbers index 0
 
-x = numbers[0] + numbers[3];
+// x = numbers index 0 + index 3
 
-x = `My favorite fruit is an ${fruits[2]}`;
+// x = My favorite fruit is an fruits index 2 use camel case
 
-x = numbers.length;
+// x = the length of numbers
 
-fruits[2] = 'pear';
+// fruits index 2 = pear
 
 // length is not read-only
 // fruits.length = 2;
 
-fruits[3] = 'strawberry';
-
 // Using the length as the index will always add on the the end
-fruits[fruits.length] = 'blueberry';
-fruits[fruits.length] = 'peach';
+// add blueberry and peach to the end of fruits
+// x = fruits;
 
-x = fruits;
-
-console.log(x);
+console.log(x)
