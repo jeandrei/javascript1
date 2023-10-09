@@ -1,4 +1,5 @@
 //Seção 03 Aula 30
+
 let x;
 
 // Create object using the object constructor
