@@ -1,56 +1,43 @@
 let x;
 
-// Create object using the object constructor
-const todo = new Object();
+// Create a todo object using the object constructor
 
-todo.id = 1;
-todo.name = 'Buy Milk';
-todo.completed = false;
+//set todo id to 1, todo name to Buy Milk and todo completed to false
 
-x = todo;
+// x = todo
 
 // Object Nesting
-const person = {
-  address: {
-    coords: {
-      lat: 42.9384,
-      lng: -71.3232,
-    },
-  },
-};
+//Create an object person with adrress and inside adress cords and inside cords lat: 42.9384 and lng: -71.3232
 
-x = person.address.coords.lat;
+//x = person address cords lat
 
-const obj1 = { a: 1, b: 2 };
-const obj2 = { c: 3, d: 4 };
+// Create two objects obj1 with values a:1 and b:2 and obj2 with values c:3 and d:4
 
 // Spread operator
-const obj3 = { ...obj1, ...obj2 };
+// now create obj3 and join the two previous arrays obj1 and obj2 using spread operators 
+
 // Same as using ...
-const obj4 = Object.assign({}, obj1, obj2);
+// now create obj4 and join the two previous arrays obj1 and obj2 using assign 
 
 // Array of objects
-const todos = [
-  { id: 1, name: 'Buy Milk' },
-  { id: 2, name: 'Pickup kids from school' },
-  { id: 3, name: 'Take out trash' },
-];
+// Create a object todos with id 1 name Buy Milk, id 2 name Pickup kids from school, id 3 name Take out trash
 
-x = todos[0].name;
+// x = todos 0 index name
 
-// Get array of object keys
-x = Object.keys(todo);
+// Get array of Object keys
+// x = object keys of todo
 
 // Get length of an object
-x = Object.keys(todo).length;
+// x = object keys of todo lenght
 
 // Get array of object values
-x = Object.values(todo);
+// x = object values todo
 
 // Get array of object key/value pairs
-x = Object.entries(todo);
+// x = object entries todo
 
 // Check if object has a property
-x = todo.hasOwnProperty('age');
+// x = hasOwnerProperty age
+
 
 console.log(x);
