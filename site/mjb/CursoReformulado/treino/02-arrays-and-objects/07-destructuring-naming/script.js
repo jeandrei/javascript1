@@ -1,15 +1,12 @@
 // Setting object properties with the same name as a variable
-const firstName = 'John';
-const lastName = 'Doe';
-const age = 30;
+const firstName = 'John'
+const lastName = 'Doe'
+const age = 30
 
-const person = {
-  firstName,
-  lastName,
-  age,
-};
+// We don't need to do the firstName:firstName as both names are iqual
+// create a object person with firstName, lastName and age
 
-console.log(person.age);
+// console log person age
 
 // Destructuring object properties
 
@@ -19,19 +16,15 @@ const todo = {
   user: {
     name: 'John',
   },
-};
+}
 
-const {
-  id: todoId, // rename id to todoId
-  title,
-  user: { name }, // destructuring multiple levels
-} = todo;
+// create a const that will get the values of todo but rename id to todoId and also gets the values of title and user name
 
-console.log(todoId);
+console.log(todoId)
 
 // Destructuring arrays & using the rest/spread operator
-const numbers = [23, 67, 33, 49, 52];
+const numbers = [23, 67, 33, 49, 52]
 
-const [first, second, ...rest] = numbers;
+// turn the number array into first, second and the rest
 
-console.log(first, second, rest);
+//console.log first, second and rest
