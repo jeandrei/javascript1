@@ -21,8 +21,8 @@
 // Console log loginUser(user)
 
 // Arrays as params
-// Math.flor return number from 0 to 1
-// Math.random rounds the number
+// Math.flor rounds the number
+// Math.random return number from 0 to 1
 // arr.lenth return the length of the array
 // So create a function getRandom(arr) where it console log some
 // random value of the array
