@@ -1,45 +1,13 @@
 // Step 1
-const library = [
-  {
-    title: 'The Road Ahead',
-    author: 'Bill Gates',
-    status: {
-      own: true,
-      reading: false,
-      read: false,
-    },
-  },
-  {
-    title: 'Steve Jobs',
-    author: 'Walter Isaacson',
-    status: {
-      own: true,
-      reading: false,
-      read: false,
-    },
-  },
-  {
-    title: 'Mockingjay',
-    author: 'Suzanne Collins',
-    status: {
-      own: true,
-      reading: false,
-      read: false,
-    },
-  },
-];
 
 // Step 2
-library[0].status.read = true;
-library[1].status.read = true;
-library[2].status.read = true;
 
 // Step 3
-const { title: firstBook } = library[0];
+// teste assim primeiro const { title } = library[0] e de um console log e depois renomeie para fistBook
+// destruct vc tem que colocar entre chaves
 
-console.log(firstBook);
+//console log firstBook
 
-// Step 4
-const libraryJSON = JSON.stringify(library);
+// Step 4 create a const libraryJSON and put library value converted to JSON string
 
-console.log(libraryJSON);
+// console log libraryJSON

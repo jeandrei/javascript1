@@ -1,53 +1,30 @@
 // Default Params
-function registerUser(user = 'Bot') {
-  // Old way - before using `=`
-  // if (!user) {
-  //   user = 'Bot';
-  // }
+// Create a function registerUser with user parameter with default value of Boot and then return user + ' is registred'
 
-  return user + ' is registered';
-}
-
-console.log(registerUser());
+// Call funciton registerUser
 
 // Rest Params
-function sum(...numbers) {
-  let total = 0;
+// if you want to pass a array you don't need to pass it as [1,2,3,4]
+// when declaring a function if use rest params ... you can simply
+// call the function as follow sum(1,2,3,4,5)
+// create a function that has rast params like numbers for example
+// and return the total of all numbers passed
 
-  for (const num of numbers) {
-    total += num;
-  }
-
-  return total;
-}
-
-console.log(sum(1, 2, 3, 4, 5, 6, 100));
+// console log sum (1,2,3,4,5,6,100)
 
 // Objects as params
-function loginUser(user) {
-  return `The user ${user.name} with the id of ${user.id} is logged in`;
-}
 
-const user = {
-  id: 1,
-  name: 'John',
-};
+// Create a function loginUser passing user and return with backtics The user username with the id of user id is logged in
 
-console.log(loginUser(user));
-console.log(
-  loginUser({
-    id: 2,
-    name: 'Sara',
-  })
-);
+// Create a user object with id 1 and name 'John'
+
+// Console log loginUser(user)
 
 // Arrays as params
-function getRandom(arr) {
-  const randomIndex = Math.floor(Math.random() * arr.length);
+// Math.flor return number from 0 to 1
+// Math.random rounds the number
+// arr.lenth return the length of the array
+// So create a function getRandom(arr) where it console log some
+// random value of the array
 
-  const item = arr[randomIndex];
-
-  console.log(item);
-}
-
-getRandom([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+// call getRandom from one to 10
