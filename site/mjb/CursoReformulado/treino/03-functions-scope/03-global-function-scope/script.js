@@ -3,31 +3,23 @@
 // console.log(innerWidth);
 
 // Global scope variable
-const x = 100;
+// declare a const x with the value of 100
 
-console.log(x, 'in global');
+// console log x and string 'in global'
 
-function run() {
-  // Access global vars in functions
-  console.log(window.innerHeight);
-  console.log(x, 'in function');
-}
+// declare a function run that console log window.innerHeight
+// and also console log x and a string 'in function'
 
-run();
+// execut the function run
 
 // Access global vars in blocks
-if (true) {
-  console.log(x, 'in block');
-}
 
-function add() {
-  // Overwriting global x (variable shadowing)
-  const x = 1;
-  const y = 50;
-  console.log(x + y);
-}
+// just check if true and console log x and string 'in block'
+
+// declare a function add and inside the function create two const x with 1 and y with 50
+// then consolo log x + y
 
 // Can not access a function scoped variable in global scope
-console.log(y);
+// try to console log y that is inside the function, you'll see that we can't because of the scop
 
-add();
+// run add function
