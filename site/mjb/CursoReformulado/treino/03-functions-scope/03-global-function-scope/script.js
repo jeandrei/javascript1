@@ -8,13 +8,13 @@
 // console log x and string 'in global'
 
 // declare a function run that console log window.innerHeight
-// and also console log x and a string 'in function'
+// and also console log the global var x and a string 'in function'
 
 // execut the function run
 
 // Access global vars in blocks
 
-// just check if true and console log x and string 'in block'
+// just check if true and console log the global x and string 'in block'
 
 // declare a function add and inside the function create two const x with 1 and y with 50
 // then consolo log x + y

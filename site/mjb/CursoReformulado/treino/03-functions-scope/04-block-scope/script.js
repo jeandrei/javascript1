@@ -1,40 +1,25 @@
-const x = 100;
+// declare a const x with 100
 
 // An If statement is a block
-if (true) {
-  console.log(x);
-  const y = 200;
-  console.log(x + y);
-}
 
+// check if true console log x  const y = 200 and console log x + y
+
+// try to console log y you'll see that y is not defined becouse of the scope
 // console.log(y); // ReferenceError: y is not defined
 
 // A loop is a block
-for (let i = 0; i <= 10; i++) {
-  console.log(i);
-}
+// create a for from 0 to 10 and console log the index
 
-// console.log(i); // ReferenceError: i is not defined
+// if you try to console log the index outside the for bloc you'll get an error is not defined
 
 // Using var
-if (true) {
-  const a = 500;
-  let b = 600;
-  var c = 700;
-}
+// if true declare a const a with 500 a let b with 600 and a var c with 700
 
-console.log(c);
+// try to console log b and c
 
 // var IS function scoped
-function run() {
-  var d = 100;
-  console.log(d);
-}
+// declare a function run with a var with 100 and console log d inside run function
 
-run();
+// call run function
 
-// console.log(d);
-
-
-const foo = 1;
-var bar = 2; // Put on the window object
+//try to console log d
