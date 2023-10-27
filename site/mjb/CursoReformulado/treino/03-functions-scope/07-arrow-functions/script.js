@@ -1,34 +1,20 @@
-//  Normal function declaration
-// function add(a, b) {
-//   return a + b;
-// }
-
 // Arrow function syntax
-const add = (a, b) => {
-  return a + b;
-};
+// create a Function Expression arrow function add with two parameters a and b and return the sum of the values
 
-// Implicit Return
-const subtract = (a, b) => a - b;
+// Implicit Return when you have just one line of code
+/* create a const arrow function subtract as function that return a - b in just one line of code*/
 
 // Can leave off () with a single param
-const double = (a) => a * 2;
+/*Create an arrow function double that multiply a * 2
+as it has just one parameter you can leave off () */
 
 // Returning an object
-const createObj = () => ({
-  name: 'Brad',
-});
+/*Create a const createObj arrow function that returns an object with name Brad to create an object before the {} you need to have () */
 
-const numbers = [1, 2, 3, 4, 5];
+/*Using arrow function with array
+create a const array numbers with 1 through five
+*/
 
-numbers.forEach(function (n) {
-  console.log(n);
-});
+// create a forEach to show all values inside array numbers
 
-// Arrow function in a callback
-numbers.forEach((n) => console.log(n));
-
-console.log(add(1, 2));
-console.log(subtract(10, 5));
-console.log(double(10));
-console.log(createObj());
+// now do the same but using Arrow function

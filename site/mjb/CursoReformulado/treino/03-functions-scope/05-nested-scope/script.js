@@ -1,25 +1,12 @@
-function first() {
-  const x = 100;
+/*
+Create a function first with a const x with 100 and inside the function first create a nested function calld second with a const y with 200 and inside the second also console log x + y
+inside the first function call second 
 
-  function second() {
-    const y = 200;
-    console.log(x + y);
-  }
+call first
+*/
 
-  // console.log(y);
-
-  second();
-}
-
-first();
-
-if (true) {
-  const x = 100;
-
-  if (x === 100) {
-    const y = 200;
-    console.log(x + y);
-  }
-
-  console.log(y);
-}
+/*
+Now if true declare a const x with 100
+inside if === 100 create an const y with 200 and console log x + y
+outside the if tru to console log y
+*/
