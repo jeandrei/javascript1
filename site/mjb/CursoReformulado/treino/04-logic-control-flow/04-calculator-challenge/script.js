@@ -1,25 +1,2 @@
-function calculator(num1, num2, operator) {
-  let result;
-
-  switch (operator) {
-    case '+':
-      result = num1 + num2;
-      break;
-    case '-':
-      result = num1 - num2;
-      break;
-    case '*':
-      result = num1 * num2;
-      break;
-    case '/':
-      result = num1 / num2;
-      break;
-    default:
-      result = 'Invalid Operator';
-  }
-
-  console.log(result);
-  return result;
-}
-
-calculator(5, 2, '&');
+/*Create a function calculator accept two numbers and operator an return the result
+you culd call it like calculator(5,2,'+') and it shound return 7 as default return Invalid Operator*/

@@ -1,30 +1,9 @@
-const d = new Date(2022, 1, 10, 19, 0, 0);
-const month = d.getMonth();
-const hour = d.getHours();
+const d = new Date(2022, 1, 10, 19, 0, 0)
+const month = d.getMonth()
+const hour = d.getHours()
 
 // Immediate value evaluation
-switch (month) {
-  case 1:
-    console.log('It is January');
-    break;
-  case 2:
-    console.log('It is February');
-    break;
-  case 3:
-    console.log('It is March');
-    break;
-  default:
-    console.log('It is not Jan, Feb or March');
-}
+/* create a switch to check month and print the month like this case 1 print It is January make until March and as default print It is not Jan, Feb or March*/
 
 // Range evaluation
-switch (true) {
-  case hour < 12:
-    console.log('Good Morning');
-    break;
-  case hour < 18:
-    console.log('Good Afternoon');
-    break;
-  default:
-    console.log('Good Night');
-}
+/* Create another switch avaluating if hour is less than 12 print good morining, if houre is less than 18 print good afternoon and default print good night */

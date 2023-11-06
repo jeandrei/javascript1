@@ -1,6 +1,6 @@
 // ||= assigns the right side value only if the left is a falsy value.
 
-let a = null;
+let a = null
 
 // if (!a) {
 //   a = 10;
@@ -8,34 +8,25 @@ let a = null;
 
 // a = a || 10;
 
-a ||= 10;
+a ||= 10
 
-console.log(a);
+// will console 10 because a is falsy null
+console.log(`will console 10 because a is falsy null (result = ${a})`)
 
 // &&= assigns the right side value only if the left is a truthy value.
 
-let b = 10;
+let b = 10
 
-if (b) {
-  b = 20;
-}
+b = b && 20
 
-b = b && 20;
-
-b &&= 20;
-
-console.log(b);
+console.log(
+  `will console 20 because b is iqual to 10 a truthy value (result = ${b})`
+)
 
 // ??= assigns the right side value only if the left is null or undefined.
 
-let c = null;
+let c = null
 
-if (c === null || c === undefined) {
-  c = 20;
-}
+c = c ?? 20
 
-c = c ?? 20;
-
-c ??= 20;
-
-console.log(c);
+console.log(`will console 20 because c is null (result = ${c}`)
