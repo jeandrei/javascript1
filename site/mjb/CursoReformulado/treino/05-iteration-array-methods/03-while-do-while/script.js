@@ -1,33 +1,12 @@
-let i = 0;
-
-while (i <= 20) {
-  console.log('Number ' + i);
-  i++;
-}
+/**Create a while loop that goes from 0 to 20 printing Number 1...20 */
 
 // Loop over arrays
-const arr = [10, 20, 30, 40, 50];
+//Create a const arr with values: 10,20,30,40,50
 
-while (i < arr.length) {
-  console.log(arr[i]);
-  i++;
-}
+/*Using while loop trougth the arr printing the values */
 
 // Nesting while loops
-while (i <= 5) {
-  console.log('Number ' + i);
-
-  let j = 1;
-  while (j <= 5) {
-    console.log(`${i} * ${j} = ${i * j}`);
-    j++;
-  }
-
-  i++;
-}
+/*Using while loop from 0 to 5 and inside create another while loop going from 1 to 5 printin i*j = result */
 
 // Do While Loop - Always runs once
-do {
-  console.log('Number ' + i);
-  i++;
-} while (i <= 20);
+/*Creste a do while from 0 to 20 printing Number 0...20 */
