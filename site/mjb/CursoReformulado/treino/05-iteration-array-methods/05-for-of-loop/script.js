@@ -1,27 +1,18 @@
 // Loop through arrays
-const items = ['book', 'table', 'chair', 'kite'];
-const users = [{ name: 'Brad' }, { name: 'Kate' }, { name: 'Steve' }];
+/**Create an array items with 'book', 'table', 'chair', 'kite' */
 
-// for (const item of items) {
-//   console.log(item);
-// }
+// go trought items with for of and print item
 
-for (const user of users) {
-  console.log(user.name);
-}
+/**Create an array users with attribut name:Brad, Kate and Steve*/
+
+// go trougth users with for of and print users name
 
 // Loop over strings
-const str = 'Hello World';
+// Create a const str with Hello World
 
-for (const letter of str) {
-  console.log(letter);
-}
+// go trougth str with for of and print the letter
 
 // Loop over Maps
-const map = new Map();
-map.set('name', 'John');
-map.set('age', 30);
-
-for (const [key, value] of map) {
-  console.log(key, value);
-}
+// create a const map as new map
+// map set name: John and age: 30
+// now go trought map and console log the key and the value
