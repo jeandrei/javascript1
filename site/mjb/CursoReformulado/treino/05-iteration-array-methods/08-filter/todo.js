@@ -1,12 +1,9 @@
 /**Create a const numbers array with numbers from 1 to 12 */
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 /**Create a const evenNumbers that will get just the even numbers using filter method */
 
-//console.log(evenNumbers)
-
 // Short version
-//Create a const evenNumbers2 that will get even numbers like above but the short version of filter then cons
+/*Create a const evenNumbers2 that will get even numbers like above but the short version of filter then console log evenNumbers2*/
 
 // Same with forEach
 /**Create a const evenNumbers3 and do de same again but using forEach method */
@@ -26,26 +23,8 @@ const companies = [
 // Get only retail companies
 /**Create a const retailCompanies thet will get just the companies with the category propertie of Retail then console log retailCompanies */
 
-const retailCompanies = companies.filter((compani) => {
-  return compani.category === 'Retail'
-})
-
-console.log(retailCompanies)
-
 // Get companies that started in or after 1980 and ended in or before 2005
 /**Now create a const earlyCompanies that will get just the companies with the propertie start greater or iqual to 1980 and propertie end less or iqual to 2005  then console log earlyCompanies*/
 
-const earlyCompanies = companies.filter((compani) => {
-  return compani.start >= 1980
-})
-
-console.log(earlyCompanies)
-
 // Get companies that lasted 10 years or more
-/**Create a longCompanies that has the propertie end less propertie start greater or iqual to 10 (end - use short version and then console log longCompanies */
-
-const longCompanies = companies.filter((compani) => {
-  return compani.end - compani.start >= 10
-})
-
-console.log(longCompanies)
+/**Create a longCompanies that has the propertie end less propertie start greater or iqual to 10 use (end - start >= 10) short version and then console log longCompanies */
