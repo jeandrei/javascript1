@@ -1,13 +1,9 @@
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+/* Create a const array numbers from 1 to 10 */
 
-const doubledNumbers = numbers.map((number) => number * 2);
-console.log(doubledNumbers);
 
-// Same with forEach
-const doubledNumbers2 = [];
-numbers.forEach((number) => {
-  doubledNumbers2.push(number * 2);
-});
+/* using short version with map create a const doubledNumbers with the numbers doubled and then console log doubledNumbers*/
+ 
+/* Same with forEach, create a const array doubledNumbers2 and do the same as above but using forEach */
 
 const companies = [
   { name: 'Company One', category: 'Finance', start: 1981, end: 2004 },
@@ -22,46 +18,18 @@ const companies = [
 ];
 
 // Create an array of company names
-const companyNames = companies.map((company) => company.name);
-// console.log(companyNames);
+/* Create a const  companyNames with the name of the companies use map and then console log companyNames*/
 
 // Create an array with just company and category
-const companyInfo = companies.map((company) => {
-  return {
-    name: company.name,
-    category: company.category,
-  };
-});
+/* Create a const  companyInfo and with map return an array of objects with name and category of the companies then console log companyInfo*/
 
-// Create an array of objects with the name and the length of each company in years
-const companyYears = companies.map((company) => {
-  return {
-    name: company.name,
-    length: company.end - company.start + ' years',
-  };
-});
-
-console.log(companyYears);
+// Create an array of objects companyYears with the name and the length of each company in years then console log companyYears
 
 // Chain map methods
-const squareAndDouble = numbers
-  .map((number) => Math.sqrt(number))
-  .map((sqrt) => sqrt * 2);
+/* Create a const  squareAndDouble with the numbers square and double, to square you can use Math.sqr and to double just multiply by 2 use map chain methods and short version*/
 
-const squareAndDouble2 = numbers
-  .map(function (number) {
-    return Math.sqrt(number);
-  })
-  .map(function (sqrt) {
-    return sqrt * 2;
-  })
-  .map(function (sqrtDoubled) {
-    return sqrtDoubled * 3;
-  });
+/* Do the same above create a const squareAndDouble2 but using the long version and as bonus in the end multiply by 3 then console squareAndDouble2*/
 
 // Chaining different methods
-const evenDouble = numbers
-  .filter((number) => number % 2 === 0)
-  .map((number) => number * 2);
+/* Create a const  evenDouble and use filter to get the even numbers and then use map to multiply by 2 and then console evenDouble*/
 
-console.log(evenDouble);
