@@ -1,54 +1,56 @@
 let output;
 
-// document.all is deprecated
-output = document.all;
+// document.all is deprecated just to know
+/* output = document.all;
 output = document.all[11];
-output = document.all.length;
+output = document.all.length; */
 
 // Everything in the html tags
-output = document.documentElement;
+// set output to document.documentElement
+
 
 // Head and body tags
-output = document.head;
-output = document.body;
+// set outputto head element
+// set output to body element
 
 // HTMLCollection of everything in head/body
-output = document.head.children;
-output = document.body.children;
+// set output to head alement and its children
+// set output to body element and its children
 
 // Random properties
-output = document.doctype;
-output = document.domain;
-output = document.URL;
-output = document.characterSet;
-output = document.contentType;
+// set output to doctype element
+// set output to domain element
+// set output to url element
+// set output to characterSet element
+// set output to contentType element
 
 // Get all forms
-output = document.forms;
-output = document.forms[0];
-output = document.forms[0].id;
-output = document.forms[0].method;
-output = document.forms[0].action;
+// set output to all forme
+// set outputto form zero
+// set output to form zero id
+// set output to form zero method
+// set output to form zero action
 
 // Change a form id
-document.forms[0].id = 'new-id';
+// change form zero id to 'new-id'
 
 // Get all links
-// output = document.links;
-// output = document.links[0];
-// output = document.links[0].href;
-// output = document.links[0].href = 'https://facebook.com';
-// output = document.links[0].id = 'google-link';
-// output = document.links[0].className = 'google-class';
-// output = document.links[0].classList;
+// set output to all links
+// set output to link zero
+// set output to link zero href
+// set output to link zero href and change ito to https://facebook.com in the same line
+// set output to link zero id and change it to 'google-link' in the same line
+// set output to link zero className an add 'google-class' to it in the same line
+// set outputto link zero classList
 
 // Get all images
-output = document.images;
-output = document.images[0];
-output = document.images[0].src;
+// set output to all images
+// set output to images zero
+// set output to images zero scr
 
 // Turn an HTMLCollection into an array
-const forms = Array.from(document.forms);
-forms.forEach((form) => console.log(form));
+//HTMLCollection can't go trought in forEach, you must convert it into array and so you can do it with Array.from then use forEach to go trought and console each form
+// create a const form and set it as an Array from document.forms
+// go trought each form with foreach and console each form
 
 console.log(output);
