@@ -1,4 +1,4 @@
-/* Seção 07 Aula 71 */
+/* Seção 07 Aula 72 */
 // querySelectorAll()
 // Returns a NodeList
 
