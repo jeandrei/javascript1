@@ -1,6 +1,6 @@
 let output;
 
-// Get child elements from a parent
+// Get children elements from a parent
 
 // Create a const parent and with querySelector get the class parent assigned to it
 
