@@ -46,3 +46,4 @@ let output;
 // secondItem nextElementSibling style color = orange
 
 console.log(output);
+console.log(output.outerHTML);
