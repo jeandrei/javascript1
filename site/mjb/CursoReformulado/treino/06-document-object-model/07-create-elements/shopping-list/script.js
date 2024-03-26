@@ -1,13 +1,18 @@
-const div = document.createElement('div');
-div.className = 'my-element';
-div.id = 'my-element';
-div.setAttribute('title', 'My Element');
+// create a const div with an element div
 
-// div.innerText = 'Hello World';
+// set div className to my-element
 
-const text = document.createTextNode('Hello World');
-div.appendChild(text);
+// set the div id to my-element
 
-// document.body.appendChild(div);
+// set the div title to My Element
 
-document.querySelector('ul').appendChild(div);
+// create a const text TextNode Hello World
+
+// add text to div
+
+// add div to body
+
+// add div to ul
+
+console.log(div)
+console.log(div.outerHTML)

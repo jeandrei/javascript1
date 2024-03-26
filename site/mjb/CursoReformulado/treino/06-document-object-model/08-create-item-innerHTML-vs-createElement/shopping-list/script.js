@@ -1,31 +1,17 @@
 // Quick & Dirty
-function createListItem(item) {
-  const li = document.createElement('li');
+/* create a function createListItem(item)  that will add an item
+to the end of the li use the dirty way just adding the html code to 
+the list item li innerHTML*/
 
-  li.innerHTML = `${item}
-  <button class="remove-item btn-link text-red">
-    <i class="fa-solid fa-xmark"></i>
-  </button>`;
-
-  document.querySelector('.items').appendChild(li);
-}
 
 // Clean & Performant
-function createNewItem(item) {
-  const li = document.createElement('li');
-  li.appendChild(document.createTextNode(item));
+/* Create a better function called createNewItem
+to do so create a li then append the item as textNode then 
+create a button with the classes remove-item btn-link text-red
+then create a icon i with the classes fa-solid fa-xmark end in the
+end append icont to button and the button to li and the li to the list
+*/
 
-  const button = document.createElement('button');
-  button.className = 'remove-item btn-link text-red';
-
-  const icon = document.createElement('i');
-  icon.className = 'fa-solid fa-xmark';
-
-  button.appendChild(icon);
-  li.appendChild(button);
-
-  document.querySelector('.items').appendChild(li);
-}
 
 createListItem('Eggs');
 createNewItem('Cheese');
