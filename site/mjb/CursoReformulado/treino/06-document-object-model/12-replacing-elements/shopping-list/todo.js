@@ -31,17 +31,4 @@
   set h2 textContent to Shopping List
   and in the end header replaceChild h2, h1
 */
-function replaceChildHeading() {
-  const header = document.querySelector('header');
-  const h1 = document.querySelector('header h1');
 
-  const h2 = document.createElement('h2');
-  h2.id = 'app-title';
-  h2.textContent = 'Shopping List';
-  header.replaceChild(h2, h1);
-}
-
-replaceFirstItem();
-replaceSecondItem();
-replaceAllItems();
-replaceChildHeading();
