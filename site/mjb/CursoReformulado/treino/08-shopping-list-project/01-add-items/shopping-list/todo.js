@@ -1,4 +1,4 @@
-/* 
+/*  
 First get the items
 create a const itemForm and get the element id item-form
 create a const itemInput and get the element id item-input
