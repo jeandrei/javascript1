@@ -3,6 +3,8 @@ const itemForm = document.getElementById('item-form');
 const itemInput = document.getElementById('item-input');
 const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
+const itemFilter = document.getElementById('filter');
+const items = itemList.querySelectorAll('li');
 
 function addItem(e) {
   e.preventDefault();
@@ -50,6 +52,13 @@ function removeItem(e) {
 function clearItems() {
   while (itemList.firstChild) {
     itemList.removeChild(itemList.firstChild);
+  }
+}
+
+function checkUI(){
+  if(items.length === 0){
+    clearBtn.style.display = 'none';
+    itemFilter.style.display = 'none';
   }
 }
 
