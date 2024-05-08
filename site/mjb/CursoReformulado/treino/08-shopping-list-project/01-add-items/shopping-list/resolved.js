@@ -14,16 +14,21 @@ function addItem(e) {
     return;
   }
 
+  addItemToDOM(newItem);
+
+  itemInput.value = '';
+}
+
+function addItemToDOM(item){
   // Create list item
   const li = document.createElement('li');
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(item));
 
   const button = createButton('remove-item btn-link text-red');
   li.appendChild(button);
 
+  // Add li to the DOM
   itemList.appendChild(li);
-
-  itemInput.value = '';
 }
 
 function createButton(classes) {

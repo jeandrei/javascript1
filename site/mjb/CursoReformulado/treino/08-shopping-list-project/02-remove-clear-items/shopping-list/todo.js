@@ -18,7 +18,7 @@
  * Then check if items.lenght is iqual to zero make the clear button invisible 
  * with clearBtn.style.display = 'none' and do the same to itemFilter else make display block
  * Then call the function at a global scope like in the end of the filter
- * Now call the function checkUI inside the function addItem also to update when an item is added
+ * Now call the function checkUI inside the function onAddItemSubmit also to update when an item is added
  * And also right after remove item in the function removeItem call the function checkUI
  * And also in the clearItems function call the function checkUI
  * Now create a itemFilter addEventListener input and call a function filterItems
@@ -31,5 +31,34 @@
  * Then if itemName.indexOf(text) != -1 
  * Test just console log true if != -1 else false
  * Then if true just make the display flex else make the display none
+ * LocalStorage
+ * Create a function addItemToStorage(item)
+ * Inside the function first check if isen't there any item in the LocalStorage
+ * To do so create a let itemsFromStorage;
+ * Then check if localStorage.getItem('items') === null
+ * If it is null let's set the itemsFromStorage to an empty array
+ * else then we need to load the items from LocalStorage
+ * itemsFromStorage = JSON.parse(LocalStorage.getItem('items'))
+ * Then we can get the new item and push it to the array
+ * itemsFromStorage.push(item)
+ * And then set to LocalStorage 
+ * localStorage.setItem('items', JSON.stringify(itemsFromStorage))
+ * Display the items from localStorage on load the page
+ * Create a function getItemsFromStorage()
+ * Inside the function first check if isen't there any item in the LocalStorage
+ * To do so create a let itemsFromStorage;
+ * Then check if localStorage.getItem('items') === null
+ * If it is null let's set the itemsFromStorage to an empty array
+ * else then we need to load the items from LocalStorage
+ * itemsFromStorage = JSON.parse(LocalStorage.getItem('items'))
+ * then return itemsFromStorage
+ * now create a document addEventListener 'DOMContentLoaded' and call the function dysplayItems that we will create next
+ * Now create the function dysplayItems() that will load the items to the page
+ * inside the function create a const itemsFromStorage and use the function getItemsFromStorage() to get the items
+ * then itemsFromStorage foreach item  addItemToDOM(item)
+ * then call the function checkUI
+ * And to make the code more structured instead of all the eventListeners be in the global scop create a function init and put all the 
+ * eventListeners in there and then as the last line call the function init
+ * 
  * 
  */
