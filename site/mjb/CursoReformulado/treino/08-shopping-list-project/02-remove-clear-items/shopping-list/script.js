@@ -5,6 +5,8 @@ const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const items = itemList.querySelectorAll('li');
+const formBtn = itemForm.querySelector('button');
+let isEditMode = false;
 
 
 function onAddItemSubmit(e) {
@@ -25,6 +27,15 @@ function onAddItemSubmit(e) {
   addItemToStorage(newItem);
   itemInput.value = '';
   checkUI();
+}
+
+function setItemToEdit(item){
+  isEditMode = true;
+  itemList.querySelectorAll('li').forEach((i) => i.classList.remove('edit-mode'));
+  item.classList.add('edit-mode');
+  formBtn.innerHTML = '<i class="fa-solid fa-pen"></i> Update Item';
+  formBtn.style.backgroundColor = '#228B22'
+  itemInput.value = item.textContent;
 }
 
 function displayItems(){
@@ -81,19 +92,39 @@ function createIcon(classes) {
   return icon;
 }
 
-function removeItem(e) {
+function onClickItem(e){
   if (e.target.parentElement.classList.contains('remove-item')) {
-    if(confirm('Are you sure?')){
-      e.target.parentElement.parentElement.remove();
-      checkUI();
-    }
+    removeItem(e.target.parentElement.parentElement);
+  } else {
+    setItemToEdit(e.target);
   }
+}
+
+function removeItem(item) { 
+  if(confirm('Are you sure?')){
+    //Remove item from DOM
+    item.remove();    
+
+    //Remove item from storage
+    removeItemFromStorage();
+    checkUI();
+  }  
+}
+
+function removeItemFromStorage(item){
+  let itemsFromStorage = getItemsFromStorage();
+  //Filter out item to be removed
+  itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
+
+  // Re-set to localStorage
+  localStorage.setItem('items', JSON.stringify(itemsFromStorage));
 }
 
 function clearItems() {
   while (itemList.firstChild) {
     itemList.removeChild(itemList.firstChild);
   }
+  localStorage.removeItem('items');
   checkUI();
 }
 
@@ -126,7 +157,7 @@ function checkUI(){
 function init(){
     // Event Listeners
   itemForm.addEventListener('submit', onAddItemSubmit);
-  itemList.addEventListener('click', removeItem);
+  itemList.addEventListener('click', onClickItem);
   clearBtn.addEventListener('click', clearItems);
   itemFilter.addEventListener('input', filterItems);
   document.addEventListener('DOMContentLoaded', displayItems);

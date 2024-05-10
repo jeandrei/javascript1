@@ -59,6 +59,36 @@
  * then call the function checkUI
  * And to make the code more structured instead of all the eventListeners be in the global scop create a function init and put all the 
  * eventListeners in there and then as the last line call the function init
+ * Create another itemList addEventListener click and call the function onClickItem for now comment the other itemList eventListener
+ * Create the above function onClickItem getting the e object event
+ * first check if the e.target.parentElement.classList.contains('remove-item') if so procede with the call the function removeItem(e.target.parentElement.parentElement);
+ * Update the function removItem(item) to just check for confirmation like are you shure? and then item.remove
+ * Now call the function removeItemFromStorage(item.textContent);
+ * We will now create the function removeItemFromStorage(item)
+ * Create a let itemsFromStorage = getItemsFromStorage();
+ * then itemsFromStorage = itemsFromStorage.filter(i) !== item
+ * and then reset the localStorage
+ * localStorage.setItem('items', json stringify itemsFromStorage) * 
+ * and then checkUI
+ * now in the clearItems lets clear the localStorage
+ * localStorage.removeItem('items');
+ * Edit item
+ * First let's create a class in the css file to edit mode
+ * In css create a class edit-mode and set color: #ccc
+ * at the top create a let isEditMode = false;
+ * now in the function onClickItem put an else statemant calling the function setItemToEdit(e.target) in the if so that if it is not clicked in the x button else set to editmode
+ * now let's create the function
+ * function setItemToEdit(item)
+ * isEditMode set to true
+ * item.classList.add('edit-mode');
+ * Now lets deal with the button
+ * create a const formBtn = itemForm querySelector 'button'
+ * now in the function setItemToEdit lets change the button to edit
+ * formBtn.innerHTML   = '<i class="fa-solid fa-pen"></i> Update Item'
+ * formBtn.style.backgroundColor = '#228B22'
+ * then set itemInput.value to item.textContent
+ * Now after the isEditMode line let's turn all the li to black
+ * itemList.querySelectorAll('li').forEach((i) => i.classList.remove('edit-mode'));
  * 
  * 
  */

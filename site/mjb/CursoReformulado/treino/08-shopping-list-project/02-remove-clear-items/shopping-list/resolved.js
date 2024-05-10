@@ -81,13 +81,16 @@ function createIcon(classes) {
   return icon;
 }
 
-function removeItem(e) {
+function onClickItem(e){
   if (e.target.parentElement.classList.contains('remove-item')) {
-    if(confirm('Are you sure?')){
-      e.target.parentElement.parentElement.remove();
-      checkUI();
-    }
+    removeItem(e.target.parentElement.parentElement);
   }
+}
+
+function removeItem(item) { 
+  if(confirm('Are you sure?')){
+    item.remove();    
+  }  
 }
 
 function clearItems() {
