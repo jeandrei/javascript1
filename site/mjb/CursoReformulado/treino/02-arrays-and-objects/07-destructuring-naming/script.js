@@ -3,17 +3,9 @@ const firstName = 'John'
 const lastName = 'Doe'
 const age = 30
 
-
 // We don't need to do the firstName:firstName as both names are iqual
 // create a object person with firstName, lastName and age
 
-const person = {
-  firstName,
-  lastName,
-  age
-}
-
-//console.log(person);
 // console log person age
 
 // Destructuring object properties
@@ -28,15 +20,11 @@ const todo = {
 
 // create a const that will get the values of todo but rename id to todoId and also gets the values of title and user name
 
-const { id:todoId, user:{ name } } = todo;
-
-console.log(todoId, name);
+console.log(todoId)
 
 // Destructuring arrays & using the rest/spread operator
 const numbers = [23, 67, 33, 49, 52]
 
 // turn the number array into first, second and the rest
-const [first, second, ...rest] = numbers;
 
 //console.log first, second and rest
-console.log(first, second, rest);
