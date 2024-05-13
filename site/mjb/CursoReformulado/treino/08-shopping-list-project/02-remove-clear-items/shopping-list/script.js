@@ -20,6 +20,20 @@ function onAddItemSubmit(e) {
     return;
   }  
 
+  // Check for edit mode
+  if (isEditMode){
+    const itemToEdit = itemList.querySelector('.edit-mode');
+    removeItemFromStorage(itemToEdit.textContent);
+    itemToEdit.classList.remove('edit-mode');
+    itemToEdit.remove();
+    isEditMode = false;
+  } else {
+    if (checkIfItemExists(newItem)){
+      alert('That item already exists!');
+      return;
+    }
+  }
+
   // Create item DOM element
   addItemToDOM(newItem);
 
@@ -99,6 +113,10 @@ function onClickItem(e){
     setItemToEdit(e.target);
   }
 }
+function checkIfItemExists(item){
+  const itemsFromStorage = getItemsFromStorage();
+  return(itemsFromStorage.includes(item));
+}
 
 function removeItem(item) { 
   if(confirm('Are you sure?')){
@@ -143,6 +161,7 @@ function filterItems(e) {
 }
 
 function checkUI(){  
+  itemInput.value = '';
   let items = itemList.querySelectorAll('li');
   if(items.length === 0){
     clearBtn.style.display = 'none';
@@ -151,6 +170,9 @@ function checkUI(){
     clearBtn.style.display = 'block';
     itemFilter.style.display = 'block';
   }
+  formBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
+  formBtn.style.backgroundColor = '#333';
+  isEditMode = false;
 }
 
 

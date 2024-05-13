@@ -89,6 +89,26 @@
  * then set itemInput.value to item.textContent
  * Now after the isEditMode line let's turn all the li to black
  * itemList.querySelectorAll('li').forEach((i) => i.classList.remove('edit-mode'));
- * 
+ * Now on onAddItemSubmit we need to check if it is on editMode otherwise wen editing and click to update the app will add the item
+ * instead of edit. In onAddItemSubmit befor add to the DOM lets check if it is in aditMode
+ * What we need to do now is just remove the old item and add the new one 
+ * so check if it is in editMode if (isEditMode) if so create a const itemToEdit = itemList.querySelector class 'edit-mode'
+ * remove the item from local storage itemToEdit.textContent
+ * remove the class itemToEdit.classList.remove('edit-mode')
+ * and then remove from the DOM itemToEdit.remove();
+ * set isEditMode to false
+ * At checkUI we need to change the update button to default 
+ * at the and the checkUI formBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
+ * and formBtn.style.backgroundColor = '#333';
+ * and in the checkUI at the end we need to set isEditMode to false
+ * and finely still at checkUI at the beggining set itemInput.value = '';
+ * now let's create a function to check if the item already exists
+ * create a function checkIfItemExists(item)
+ * get all the items from localStorage
+ * create a const itemsFromStorage = getItemsFromStorage();
+ * then just return itemsFromStorage.includes(item) it returns true or false
+ * now on onAddItemSubmit on the line if (isEditMode) put the else statement and 
+ * then if checkIfItemExists(newItem) then alert This item already exists 
+ * and stop code with return;
  * 
  */
