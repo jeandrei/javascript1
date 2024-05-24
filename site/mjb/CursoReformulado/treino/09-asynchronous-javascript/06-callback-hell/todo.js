@@ -11,9 +11,9 @@
  * with a random interval with the formula Math.flor math random * 3000) + 1000
  * 
  * Now call 
- * getData(/movies.json)
- * getData(/actors.json)
- * getData (/directors.json)
+ * getData(./movies.json)
+ * getData(./actors.json)
+ * getData (./directors.json)
  * 
  * As result check tha the order of execution does not follow the sequence becouse of differents random timer
  * 
@@ -29,11 +29,11 @@
  * })
  * 
  * and so we can nest other callback to get the next set of data like
- *  getData('/movies.json', (data) => {
+ *  getData('./movies.json', (data) => {
  *    console.log(data);
- *    getData('/actors.json', (data) => {
+ *    getData('./actors.json', (data) => {
  *      console.log(data);
- *      getData('/directors.json', (data) => {
+ *      getData('./directors.json', (data) => {
  *        console.log(data);
  *      });
  *    });
