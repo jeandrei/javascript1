@@ -1,37 +1,36 @@
-function getData(endpoint) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
+/**
+ * Refector this code using promise.all
+ * in the getData check if readyState === 4 if so check if status === 200 if so resolve else reject returning 'Something went wrong'
+ * as promises create a 
+ * const moviesPromise
+ * const actorsPromise
+ * const directorsPromise
+ * After that just create a const dummyPromise as promise also and just return Hello World as resolve
+ * Then use Promise.all and call all the promises
+ * catch error and console log the error
+ */
+function getData(endpoint, cb) {
+  const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', endpoint);
+  xhr.open('GET', endpoint);
 
-    xhr.onreadystatechange = function () {
-      if (this.readyState === 4) {
-        if (this.status === 200) {
-          resolve(JSON.parse(this.responseText));
-        } else {
-          reject('Something went wrong');
-        }
-      }
-    };
+  xhr.onreadystatechange = function () {
+    if ((this.readyState === 4) & (this.status === 200)) {
+      cb(JSON.parse(this.responseText));
+    }
+  };
 
-    setTimeout(() => {
-      xhr.send();
-    }, Math.floor(Math.random() * 3000) + 1000);
-  });
+  setTimeout(() => {
+    xhr.send();
+  }, Math.floor(Math.random() * 3000) + 1000);
 }
 
-const moviesPromise = getData('./movies.json');
-const actorsPromise = getData('./actors.json');
-const directorsPromise = getData('./directors.json');
-
-const dummyPromise = new Promise((resolve, reject) => {
-  resolve('Hello World');
-});
-
-// Takes in promises
-Promise.all([moviesPromise, actorsPromise, directorsPromise, dummyPromise])
-  .then((data) => {
-    // Returns an array of promise results
+getData('./movies.json', (data) => {
+  console.log(data);
+  getData('./actors.json', (data) => {
     console.log(data);
-  })
-  .catch((error) => console.log(error));
+    getData('./directors.json', (data) => {
+      console.log(data);
+    });
+  });
+});
