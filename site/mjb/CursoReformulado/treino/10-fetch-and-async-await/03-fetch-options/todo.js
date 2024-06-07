@@ -7,8 +7,8 @@
 
   Create a function createPost, destruct the parameters title and body
   Fetch the url: 'https://jsonplaceholder.typicode.com/posts',
-  method: POST
+  Method: POST
   body: JSON strignify title and body
-  headers: Content-Type : application/json
+  Headers: Content-Type : application/json
   token: 123
 */
