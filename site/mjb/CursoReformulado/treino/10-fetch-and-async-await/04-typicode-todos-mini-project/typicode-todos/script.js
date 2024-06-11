@@ -50,6 +50,11 @@
  * Click in response and seee the response of the server, you'll see that we get the id of 201 so that the post was created
  * 
  * 
- * 
+ * names:
+ * apiUrl
+ * getTodos -> ?_limit=5 -> data-id
+ * init 
+ * addTodoToDOM
+ * createTodo
  * 
  */
