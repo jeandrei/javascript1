@@ -49,12 +49,94 @@
  * see that the method is post, status is 201
  * Click in response and seee the response of the server, you'll see that we get the id of 201 so that the post was created
  * 
+ * Now let's change the class to 'done' when the user click in one todo
+ * first lets create an eventListener to all the todo-list id and execute the function
+ * toggleCompleted
+ * Then let's create the const function toggleCompleted passing the e event object
+ * So to target the object when click we need to add a class whent we add the 
+ * object to the DOM
+ * So in the function addTodoToDOM lets add a class 'todo' to the div 
+ * Now in the toggleCompeleted function we can target just the objects like so
+ * if e.target.classList.contains('todo') it means we click in a div with todo class
+ * and so we can toggle the class done to it
+ * 
+ * Let's create a function updateTodo passing two arguments
+ * id and completed
+ * Just console log id and completed
+ * 
+ * minuto 5.44
+ * 
+ * Now return to the toggleCompleted function and call the function
+ * updateTodo(e.target.dataset.id, e.target.classList.contains('done'))
+ * Next we need to send the request to update the todo
+ * 
+ * 
+ * 
+ * 
  * 
  * names:
- * apiUrl
+ * apiUrl 'https://jsonplaceholder.typicode.com/todos'
  * getTodos -> ?_limit=5 -> data-id
  * init 
  * addTodoToDOM
  * createTodo
  * 
  */
+
+const apiUrl = 'https://jsonplaceholder.typicode.com/todos'
+
+const getTodos = () => {
+  fetch(apiUrl + '?_limit=5')
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach(todo => addTodoToDOM(todo))
+    })
+}
+
+const addTodoToDOM = (todo) => {
+  const div = document.createElement('div')
+  div.classList.add('todo')
+  div.appendChild(document.createTextNode(todo.title))
+  div.setAttribute('data-id', todo.id)
+  if(todo.completed){
+    div.classList.add('done')
+  }
+  document.querySelector('#todo-list').appendChild(div) 
+}
+
+const createTodo = (e) => {
+  e.preventDefault()
+  const newTodo = {
+    title: e.target.firstElementChild.value,
+    completed: false
+  }
+  fetch(apiUrl,{
+    method: 'POST',
+    body: JSON.stringify(newTodo),
+    headers: {
+      'Content-Type' : 'application/json'
+    }
+  })
+    .then((res) => res.json())
+    .then((data) => addTodoToDOM(data))
+}
+
+const toggleCompleted = (e) => {
+  if(e.target.classList.contains('todo')){
+    e.target.classList.toggle('done')
+    updateTodo(e.target.dataset.id, e.target.classList.contains('done'))
+  }
+}
+
+const updateTodo = (id, completed) => {
+  console.log(id, completed);
+}
+
+
+const init = () => {
+  document.addEventListener('DOMContentLoaded', getTodos)
+  document.querySelector('#todo-form').addEventListener('submit', createTodo)
+  document.querySelector('#todo-list').addEventListener('click',toggleCompleted)
+}
+
+init()
