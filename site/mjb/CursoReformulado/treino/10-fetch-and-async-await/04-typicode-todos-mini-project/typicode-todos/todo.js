@@ -94,5 +94,6 @@
  * createTodo
  * toggleCompleted
  * updateTodo
+ * deleteTodo
  * 
  */ 
