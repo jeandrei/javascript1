@@ -1,7 +1,7 @@
 /**
  * the site http://httpstat.us returns every type of html code
  * like http://httpstat.us/200 will return the code 200
- * you can check that int the network/all/headers tab in the browse console
+ * you can check that in the network/all/headers tab in the browse console
  * 
  * First just feth the url http://httpstat.us/200 in the first .then return response and in the second console success
  * Now change the code to 404 Not Found and you'll see that the code still return success
