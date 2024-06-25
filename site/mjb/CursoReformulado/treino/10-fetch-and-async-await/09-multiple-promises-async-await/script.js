@@ -1,83 +1,22 @@
-function getData(endpoint) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', endpoint);
-
-    xhr.onreadystatechange = function () {
-      if (this.readyState === 4) {
-        if (this.status === 200) {
-          resolve(JSON.parse(this.responseText));
-        } else {
-          reject('Error: Something went wrong');
-        }
-      }
-    };
-
-    setTimeout(() => {
-      xhr.send();
-    }, Math.floor(Math.random() * 3000) + 1000);
-  });
-}
-
-// getData('./movies.json')
-//   .then((movies) => {
-//     console.log(movies);
-//     return getData('./actors.json');
-//   })
-//   .then((actors) => {
-//     console.log(actors);
-//     return getData('./directors.json');
-//   })
-//   .then((directors) => {
-//     console.log(directors);
-//   })
-//   .catch((error) => console.log(error));
-
-async function getAllData() {
-  const movies = await getData('./movies.json');
-  const actors = await getData('./actors.json');
-  const directors = await getData('./directors.json');
-  console.log(movies, actors, directors);
-}
-
-async function getAllDataWithFetch() {
-  const moviesRes = await fetch('./movies.json');
-  const movies = await moviesRes.json();
-
-  const actorsRes = await fetch('./actors.json');
-  const actors = await actorsRes.json();
-
-  const directorsRes = await fetch('./directors.json');
-  const directors = await directorsRes.json();
-
-  console.log(movies, actors, directors);
-}
-
-async function getAllDataPromiseAll() {
-  const [moviesRes, actorsRes, directorsRes] = await Promise.all([
-    fetch('./movies.json'),
-    fetch('./actors.json'),
-    fetch('./directors.json'),
-  ]);
-
-  const movies = await moviesRes.json();
-  const actors = await actorsRes.json();
-  const directors = await directorsRes.json();
-
-  console.log(movies, actors, directors);
-}
-
-async function getAllDataPromiseAll2() {
-  const [movies, actors, directors] = await Promise.all([
-    fetch('./movies.json').then((res) => res.json()),
-    fetch('./actors.json').then((res) => res.json()),
-    fetch('./directors.json').then((res) => res.json()),
-  ]);
-
-  console.log(movies, actors, directors);
-}
-
-// getAllData();
-// getAllDataWithFetch();
-// getAllDataPromiseAll();
-getAllDataPromiseAll2();
+/**
+ * First create a function getData(endpoint) where endpoint is gonna be the url to XMLHttpRequest
+ * This function return a Promise
+ * In the promise create a const xhr  XMLHttpRequest
+ * then xhr open GET endpoint
+ * Then xhr onreadystatechange function check if readyState === 4 if so check if status === 200 if so resolve parsing this responseText
+ * Else reject with the message Error: Something went wrong
+ * To xhr.send create a setTimeout with a random number random 3000 + 1000
+ * 
+ * Then call getData('./movies.json') console log movies and return getData('./actors.json') console log actors and 
+ * return getData('./directors.json') console log directors and in the catch console log error
+ * 
+ * After that create a function getAllData and get all the data using async await and console log movies, actors and directors
+ * Then create a function getAllDataWithFetch and do the same above but instead using the getData use fetch and console log
+ * movies, actors and directors
+ * 
+ * Now create a function getAllDataPromiseAll use destructuring like const [moviesRes, actorsRes, directorsRes] 
+ * and fetch all three movies, actors and directors and console log them use promise.all() async await
+ * 
+ * Finaly create a function getAllDataPromiseAll2() use promise.all() but this time instead use await use .then
+ * 
+ */
