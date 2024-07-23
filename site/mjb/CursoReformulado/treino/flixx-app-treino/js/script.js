@@ -86,8 +86,54 @@
  * to show the companies use show.production_companies.map to map to all companies and inside span tag
  * print the compani and join with ''
  * then appendChild the div to the show-details class
+ * 
+ * Now create a function displayBackgroundImage(type, backgroundPath)
+ * inside the function create a const overlayDiv and set to createElement div
+ * now using css set the backgorundImage to the url `url(https://image.tmdb.org/t/p/original/${backgroundPath})`
+ * set the background size to cover
+ * backgroundPosition to center
+ * backgroundRepeat to no-repeat
+ * height to 100vh
+ * width to 100vw
+ * position to absolute
+ * top to zero
+ * left to zero
+ * zindex to -1
+ * opacity to 0.1
+ * then check if it type is movie append the div to #movie-details
+ * else append the div to #show-details
+ * and then call the function after fetch in displayShowDetails and displayMovieDetails
+ * 
+ * The search is divided in 3 steps
+ * @todo
+ * 1 create a searchAPIData() that will make the search in the database
+ * 2 search that will get the users search request and call the searchAPIData
+ * 3 displaySearchResults that will display the result in the app
+ * 
+ * 
+ * 2 - Now lets create the search part
+ * create a async search function
+ * inside the function create a const queryString = to the window.location.search
+ * window.location.search will return whatever is after the ? in the url
+ * then create a const urlParams = new URLSearchParams(queryString)
+ * now set the global.search.type to the urlParams.get('type') it will come from the url ?type
+ * and the global.search.term to the urlParams.get('search-term') it will come from the url?type=movie&search-term=teste
+ * now check if global.search.term !== '' and global.search.term !== null if so
+ * create a set of const using destruct results, total_pages, page, total_results await searchAPIData()
+ * set the global.search page to page
+ * global.search.totalPages to total_pages
+ * global.search.totalResults to total_results
+ * then call displaySearchResults(results)
+ * clear the search document.queryselect('#search-term').value = ''
+ * else if text of search is blank showAlert('Please enter a search term');
+ * 
+ * 
+ * call the function search() at the router search.html
  *   
  */
+
+
+
 
 const global = {
   curentPage: window.location.pathname,
@@ -120,6 +166,7 @@ const global = {
       displayShowDetails()
       break
     case '/search.html' :
+      search()
       console.log('search');
   }
   hightlightActiveLink()  
@@ -204,7 +251,12 @@ async function displayPopularShows(){
 async function displayMovieDetails(){
   const movieId = window.location.search.split('=')[1]
   const movie = await fetchAPIData(`movie/${movieId}`)
+ 
+  // Overlay for background image
+  displayBackgroundImage('movie', movie.backdrop_path);
+
   const div = document.createElement('div')
+
   div.innerHTML = `  
   <div class="details-top">
     <div>
@@ -269,6 +321,8 @@ async function displayMovieDetails(){
 async function displayShowDetails(){
   const showId = window.location.search.split('=')[1]
   const show = await fetchAPIData(`tv/${showId}`) 
+
+  displayBackgroundImage('show', show.backdrop_path);
   
   const div = document.createElement('div')
   div.innerHTML = `
@@ -322,5 +376,31 @@ async function displayShowDetails(){
   `
   document.querySelector('#show-details').appendChild(div)
 }
+
+
+// Display Backdrop On Details Pages
+function displayBackgroundImage(type, backgroundPath) {
+  const overlayDiv = document.createElement('div');
+  overlayDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backgroundPath})`;
+  overlayDiv.style.backgroundSize = 'cover';
+  overlayDiv.style.backgroundPosition = 'center';
+  overlayDiv.style.backgroundRepeat = 'no-repeat';
+  overlayDiv.style.height = '100vh';
+  overlayDiv.style.width = '100vw';
+  overlayDiv.style.position = 'absolute';
+  overlayDiv.style.top = '0';
+  overlayDiv.style.left = '0';
+  overlayDiv.style.zIndex = '-1';
+  overlayDiv.style.opacity = '0.1';
+
+  if (type === 'movie') {
+    document.querySelector('#movie-details').appendChild(overlayDiv);
+  } else {
+    document.querySelector('#show-details').appendChild(overlayDiv);
+  }
+}
+
+
+
 
 document.addEventListener('DOMContentLoaded', init())
