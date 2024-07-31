@@ -105,13 +105,40 @@
  * and then call the function after fetch in displayShowDetails and displayMovieDetails
  * 
  * The search is divided in 3 steps
- * @todo
+ * 
  * 1 create a searchAPIData() that will make the search in the database
- * 2 search that will get the users search request and call the searchAPIData
- * 3 displaySearchResults that will display the result in the app
+ * 2 displaySearchResults that will display the result in the app
+ * 3 search that will get the users search request and call the searchAPIData
+ * 
+ * 1 - Create a async function searchAPIData() that will make the request search in the database
+ * create a const API_KEY and get the value of the global api api_key
+ * create a const API_URL and get the value of global api apiUrl
+ * show spinner
+ * create a const response and await fetch using the backticks mount the url 
+ * API_URL search/{global.search.type}?api_key= API_KEY&language=en-US&query= {global.search.term}&page={global.search.page}
+ * then create a const data await response json
+ * hide spinner
+ * and return data
+ *   
+ * 2 - Create a displaySearchResults(results)
+ * Using querySelector set the elements search-results, search-results-heading and pagination innerHTML to ''
+ * results.forEach(result)
+ * create a const div with a elemen div
+ * add the class card to it
+ * then copy from the search.html after class card and past in the div innerHTML
+ * make the changes necessery to show the result
+ * then change the element search-results-heading innerHTML to show the length and total results 
+ * then appendChild to the element search-results the div above created
+ * 
+ * 3 - Create a function to showAlert(message, className = 'error')
+ * create a const alertEl and set a div to it
+ * add the class alert to the className attribute
+ * appendChild the document.createTextNode(message)
+ * select the element of alert and appendChild the alertEl
+ * then setTimeout(() => alertEl.remove(), 3000)
  * 
  * 
- * 2 - Now lets create the search part
+ * 4 - Now lets create the search part
  * create a async search function
  * inside the function create a const queryString = to the window.location.search
  * window.location.search will return whatever is after the ? in the url
@@ -126,6 +153,10 @@
  * then call displaySearchResults(results)
  * clear the search document.queryselect('#search-term').value = ''
  * else if text of search is blank showAlert('Please enter a search term');
+ * 
+ * 
+ * 
+ * 
  * 
  * 
  * call the function search() at the router search.html
@@ -144,11 +175,12 @@ const global = {
     totalPages: 1,
     totalResults: 0
   },
-  api: {
+  api: {    
     apiKey: '8447df8edaa7afafb1b029868613779e',
     apiUrl: 'https://api.themoviedb.org/3/'
   }
 }
+
 
  function init(){
   switch (global.curentPage){
@@ -399,6 +431,90 @@ function displayBackgroundImage(type, backgroundPath) {
     document.querySelector('#show-details').appendChild(overlayDiv);
   }
 }
+
+async function searchAPIData(){  
+  const API_KEY = global.api.apiKey 
+  const API_URL = global.api.apiUrl
+  showSpinner()
+  const response = await fetch(`${API_URL}search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`)
+  const data = await response.json()
+  hideSpinner()
+  return data
+}
+
+async function displaySearchResults(results){
+  document.querySelector('#search-results').innerHTML = ''
+  document.querySelector('#search-results-heading').innerHTML = ''
+  document.querySelector('#pagination').innerHTML = ''
+  results.forEach((result) => {
+    const div = document.createElement('div')
+    div.classList.add('card')
+    div.innerHTML = `   
+    <a href="${global.search.type}-details.html?id=${result.id}">
+      ${
+        result.poster_path
+        ? `<img
+        src="https://image.tmdb.org/t/p/w500/${result.poster_path}"
+        class="card-img-top"
+        alt="${global.search.type === 'movie' ? result.title : result.name}"
+        />`
+        :
+        `<img
+        src="images/no-image.jpg"
+        class="card-img-top"
+        alt="${global.search.type === 'movie' ? result.title : result.name}"
+        />
+        `
+      }
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">${global.search.type === 'movie' ? result.title : result.name}</h5>
+      <p class="card-text">
+        <small class="text-muted">Release: ${global.search.type === 'movie' ? result.release_date : result.first_air_date}</small>
+      </p>
+    </div>`
+    document.querySelector('#search-results-heading').innerHTML = `<h2>${results.length} of ${global.search.totalResults} Results for ${global.search.term}</h2>`
+    document.querySelector('#search-results').appendChild(div)
+  })
+
+}
+
+
+
+
+
+// Seach movies/shows
+async function search(){
+  // document.location.search returns everything after the ? in the url in get method ex: ?type=movie&search-term=teste
+  const queryString = document.location.search
+  const urlParams = new URLSearchParams(queryString)
+  //type and search-term are the get var passed through url
+  global.search.type =  urlParams.get('type')
+  global.search.term =  urlParams.get('search-term')
+
+  if(global.search.term !== '' && global.search.term !== null){
+    const { results, total_pages, page, total_results } = await searchAPIData()
+    
+    global.search.page = page
+    global.search.totalPages = total_pages
+    global.search.totalResults = total_results
+    
+
+    if(results.length === 0){      
+      showAlert('No result found')
+      return;
+    }
+
+    displaySearchResults(results)
+
+    document.querySelector('#search-term').value = ''
+    
+  } else {
+    showAlert('Please enter a search term')    
+  }
+}
+
+
 
 
 
