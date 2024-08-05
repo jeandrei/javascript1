@@ -1,3 +1,4 @@
+//Seção 13 aula 150
 // leaflet
 //https://leafletjs.com/download.html
 
@@ -15,11 +16,17 @@ L.marker([51.5, -0.09]).addTo(map)
 
 const marker = L.marker([0, 0]).addTo(map);
 
+// to check the values pass into the callback function from the getCurrentPosition method
+navigator.geolocation.getCurrentPosition(function(pos){
+  console.log(pos);
+})
+
 navigator.geolocation.getCurrentPosition(function(pos){
   const lat = pos.coords.latitude;
   const lng = pos.coords.longitude;
 
   marker.setLatLng([lat, lng]).update();
   map.setView([lat, lng], 13)
-  //estava no minuto 7
+  
+  marker.bindPopup('<strong>Hello World</strong> <br> This is my location');
 })
