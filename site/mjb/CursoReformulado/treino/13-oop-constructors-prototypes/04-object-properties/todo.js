@@ -17,7 +17,7 @@
  * to remove a property simply use delete so delete the rect2.perimeter property
  * 
  * Check for existing property
- * console log if rect2 hawOwnProperty('color) 
+ * console log if rect2 hawOwnProperty('color') 
  * do the same as rect1
  * as we add color just to rect1 just rect1 will return true
  * 
