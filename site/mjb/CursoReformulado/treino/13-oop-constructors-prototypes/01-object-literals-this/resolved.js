@@ -3,7 +3,8 @@ const rectangle = {
   name: 'Rectangle 1',
   width: 20,
   height: 10,
-  // We can add methods to an object and use this keyword to access the properties of the object
+  // We can add methods to an object and use this keyword to access the properties of the object 
+  //but the best way is to add into a prototype
   area: function () {
     return this.width * this.height;
   },
