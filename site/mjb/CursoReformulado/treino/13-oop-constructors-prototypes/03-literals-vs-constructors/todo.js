@@ -11,7 +11,7 @@
  * You'll see that the strLit is not an instance of String and tha strObj is
  * We have constructors for other types of objects like numbers, boolean, array, even functions and object
  * Create a const numLit and set it to 20
- * Now create a numObj and set to a nes Number 20
+ * Now create a numObj and set to a new Number 20
  * console log numLit, typeof numLit
  * console log numObj, type of numObj
  * do the same with boolean:boolLit, boolObj set to true
