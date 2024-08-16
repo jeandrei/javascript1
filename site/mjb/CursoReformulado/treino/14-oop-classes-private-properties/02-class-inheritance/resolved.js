@@ -1,4 +1,4 @@
-/* Seção 14 Aula 176  */
+/* Seção 15 Aula 176  */
 // Parent class
 class Shape {
   constructor(name) {

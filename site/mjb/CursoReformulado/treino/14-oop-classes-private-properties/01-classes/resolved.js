@@ -1,4 +1,4 @@
-/* Seção 14 Aula 175  */
+/* Seção 15 Aula 175  */
 class Rectangle {
   constructor(name, width, height) {
     this.name = name;
