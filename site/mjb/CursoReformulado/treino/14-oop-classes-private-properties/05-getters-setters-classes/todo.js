@@ -1,10 +1,10 @@
 /**
  * 
  * Gettes and setters are methods we used to get or set properties for that object
- * we can use with classes, constructors and even with object li object literals
+ * we can use with classes, constructors and even with object object literals
  * Reasons to use: 
  *  1 - You might wanna do something to the value before return as example turn it to uppercase
- *  2 - When use private properties, when you have a privete properti and you don't wanna the user to access it directly 
+ *  2 - When use private properties, when you have a privete property and you don't wanna the user to access it directly 
  *  you can use getter and setter
  * 
  * 
