@@ -1,4 +1,4 @@
-/* Seção 15 Aula 175  */
+/* Seção 14 Aula 175  */
 class Rectangle {
   constructor(name, width, height) {
     this.name = name;
@@ -24,7 +24,7 @@ class Rectangle {
 }
 
 const square = new Rectangle('Square', 20, 20);
-console.log(square.area());
+console.log(square.squarearea());
 console.log(square.perimeter());
 console.log(square.isSquare());
 square.logArea();
