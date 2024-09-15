@@ -1,29 +1,18 @@
 /**
  * 
- * The filter part
- * in the app class let's add an eventlistener at the id filter-meals on keyup and call this._filterItems.bind(this, 'meals')
- * do the same for workout
- * now let's create our filterItems
- * Under removeItems create a new method _filterItems(type, e)
- * first create a const text set to e.target.value.toLowerCase()
- * and for test just console text
- * now let's loop through the items
- * document.querySelectorAll(`#{type}-items .card`) so this will get all meal-items or workout-items id with class of card
- * document.querySelectorAll(`#{type}-items .card`).forEach(item => {
- *  const name = item.firstElementChild.firstElementChild.textContent
- * })
- * then do a check if name.toLowerCase().indexOf(text) !== -1 then item.style.display = 'block' else item.style.display = 'none'
- * Reset everything
- * in the app constructor create a eventlistener for the reset id on click and call the method _reset.bind(this)
- * now at the App class behind filterItems create the method _reset()
- * call the _tracker.reset()
- * and to reset the elements in the dom
- * get the element id meal-items innerHTML and set it to nothing
- * do the same for workout-items
- * set the filter-meals id value to nothing
- * same to filter-workouts
- * now at 
- * minuto 9:40
+ * Show meal in the Meals/Food Items list
+ * To do so let's first call the method _displayNewMeal(meal) inside the addMeal method right before the _render
+ * We still need to create the _displayNewMeal method.
+ * Now right above the render method lets create the _displayNewMeal(meal)
+ * create a const mealsEl and set it to the element id of meal-items
+ * now create a const mealEl and set it to a new element div
+ * now add to the div the class card and my-2
+ * now at the mealEl setAttribute('data-id') and set it to the meal.id
+ * now for the mealEl html using backticks set it to the html code in the index.html everything inside card my-2 class
+ * update the card coded text with the meal.name and meal.calories
+ * then remove from the index.html all the meal items hardcoded
+ * than add the elemento to the dom mealsEl.appendChild(mealEl)
+ * Now do the same for workout _displayNewWorkout(workout)
  * 
  */
 class CalorieTracker{
@@ -52,26 +41,6 @@ class CalorieTracker{
     this._totalCalories -= workout.calories;
     this._displayNewWorkout(workout);
     this._render();
-  }
-
-  removeMeal(id){
-    const index = this._meals.findIndex((meal) => meal.id === id);
-    if(index !== -1){
-      const meal = this._meals[index];
-      this._totalCalories -= meal.calories;
-      this._meals.splice(index, 1);
-      this._render();
-    }
-  }
-
-  removeWorkout(id){
-    const index = this._wokouts.findIndex((workout) => workout.id === id);
-    if(index !== -1){
-      const workout = this._wokouts[index];
-      this._totalCalories += workout.calories;
-      this._wokouts.splice(index, 1);
-      this._render();
-    }
   }
 
   _displayCaloriesTotal(){
@@ -197,14 +166,7 @@ class App{
     this._tracker = new CalorieTracker();
     document.getElementById('meal-form').addEventListener('submit',this._newItem.bind(this, 'meal'));
     document.getElementById('workout-form').addEventListener('submit',this._newItem.bind(this, 'workout'));
-    document.getElementById('meal-items').addEventListener('click', this._removeItem.bind(this, 'meal'));
-    document.getElementById('workout-items').addEventListener('click', this._removeItem.bind(this, 'workout'));
-    document.getElementById('filter-meals').addEventListener('keyup', this._filterItems.bind(this, 'meal'));
-    document.getElementById('filter-workouts').addEventListener('keyup', this._filterItems.bind(this, 'workout'));
-    document.getElementById('reset').addEventListener('click', this._reset.bind(this));
-
   }
-
 
   _newItem(type, e){
     e.preventDefault();
@@ -214,7 +176,6 @@ class App{
       alert('Please fill in all fields');
       return;
     }
-    
 
     if(type === 'meal'){
       const meal = new Meal(name.value, +calories.value);
@@ -232,44 +193,6 @@ class App{
     });
   }
 
-  _removeItem(type, e){  
-    if(e.target.classList.contains('delete') || e.target.classList.contains('fa-xmark')){
-      if(confirm('Are you sure?')){
-       const id = e.target.closest('.card').getAttribute('data-id');
-       if(type === 'meal'){
-        this._tracker.removeMeal(id);
-       } else {
-        this._tracker.removeWorkout(id);
-       }
-
-       e.target.closest('.card').remove();
-
-      }
-    }
-  }
-
-  _filterItems(type, e){   
-    const text = e.target.value.toLowerCase();  
-    document.querySelectorAll(`#${type}-items .card`).forEach((item) => 
-    {
-      const name = item.firstElementChild.firstElementChild.textContent;
-      
-      if(name.toLowerCase().indexOf(text) !== -1){        
-        item.style.display = 'block';
-      } else {        
-        item.style.display = 'none';
-      }
-    })
-  }
-
-  _reset(){
-    this._tracker.reset();
-    document.getElementById('meal-items').innerHTML = '';
-    document.getElementById('workout-items').innerHTML = '';
-    document.getElementById('filter-meals').value = '';
-    document.getElementById('filter-workouts').value = '';
-  }
-  
  
 }
 

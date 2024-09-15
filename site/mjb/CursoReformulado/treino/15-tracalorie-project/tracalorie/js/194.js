@@ -1,29 +1,34 @@
 /**
  * 
- * The filter part
- * in the app class let's add an eventlistener at the id filter-meals on keyup and call this._filterItems.bind(this, 'meals')
- * do the same for workout
- * now let's create our filterItems
- * Under removeItems create a new method _filterItems(type, e)
- * first create a const text set to e.target.value.toLowerCase()
- * and for test just console text
- * now let's loop through the items
- * document.querySelectorAll(`#{type}-items .card`) so this will get all meal-items or workout-items id with class of card
- * document.querySelectorAll(`#{type}-items .card`).forEach(item => {
- *  const name = item.firstElementChild.firstElementChild.textContent
- * })
- * then do a check if name.toLowerCase().indexOf(text) !== -1 then item.style.display = 'block' else item.style.display = 'none'
- * Reset everything
- * in the app constructor create a eventlistener for the reset id on click and call the method _reset.bind(this)
- * now at the App class behind filterItems create the method _reset()
- * call the _tracker.reset()
- * and to reset the elements in the dom
- * get the element id meal-items innerHTML and set it to nothing
- * do the same for workout-items
- * set the filter-meals id value to nothing
- * same to filter-workouts
- * now at 
- * minuto 9:40
+ * Let's do the remove part
+ * Inside the app class we are gonna have a removeItem
+ * so inside the app class constructor first let's create an eventlistener target the meal-items id element it will get all the items
+ * event must be click and call the method this._removeItem.bind(this, 'meal') that we are gonna create. note that meal is the type
+ * now below the method newItem let's create the _removeItem(type, e)
+ * inside check if e.target.classList.contains the class delete in this case button or e.target.classList.contains fa-xmark in this case the icon
+ * do a confirm 'Are you sure?'
+ * if confirm just consolo log 'delete'
+ * now we wanna get the id that we add in the item with the attribute data-id
+ * and so instead of console removed lets create a const id and set it to e.target.closest('.card').getAttribute('data-id');
+ * closest('.card') whatever class card closest to us
+ * and console log the id
+ * if when remove a meal it shows the id in the console it's ok
+ * now lets do a check if it is a meal or a workout type so that we can do different things on each one
+ * check if type === 'meal then call this._tracker.removeMeal(id) else call _tracker.removeWorkout(id)
+ * and finaly remove from the DOM e.target.closest('.card').remove()
+ * note that we don't have created yet the removeMeal neither the removeWorkout
+ * so let's create it
+ * so as it is a public method we can put it behind addWorkout at CalorieTracker class
+ * so create a class removeMeal(id)
+ * create a const index and set it to this._meals.findIndex((meal) => meal.id === id) 
+ * Note that wen the findIndex doesn't find a match it return a -1 value
+ * so check if index != -1 then
+ * create a const meal and set it to this._meals[index] to get the current meal is being deleted
+ * then update the totalCalories _totalCalories -= meal.calories;
+ * then remove the meal from the array
+ * this._meals.splice(index, 1)
+ * then render again this._render()
+ * Now do the same for workout
  * 
  */
 class CalorieTracker{
@@ -199,12 +204,7 @@ class App{
     document.getElementById('workout-form').addEventListener('submit',this._newItem.bind(this, 'workout'));
     document.getElementById('meal-items').addEventListener('click', this._removeItem.bind(this, 'meal'));
     document.getElementById('workout-items').addEventListener('click', this._removeItem.bind(this, 'workout'));
-    document.getElementById('filter-meals').addEventListener('keyup', this._filterItems.bind(this, 'meal'));
-    document.getElementById('filter-workouts').addEventListener('keyup', this._filterItems.bind(this, 'workout'));
-    document.getElementById('reset').addEventListener('click', this._reset.bind(this));
-
   }
-
 
   _newItem(type, e){
     e.preventDefault();
@@ -248,28 +248,6 @@ class App{
     }
   }
 
-  _filterItems(type, e){   
-    const text = e.target.value.toLowerCase();  
-    document.querySelectorAll(`#${type}-items .card`).forEach((item) => 
-    {
-      const name = item.firstElementChild.firstElementChild.textContent;
-      
-      if(name.toLowerCase().indexOf(text) !== -1){        
-        item.style.display = 'block';
-      } else {        
-        item.style.display = 'none';
-      }
-    })
-  }
-
-  _reset(){
-    this._tracker.reset();
-    document.getElementById('meal-items').innerHTML = '';
-    document.getElementById('workout-items').innerHTML = '';
-    document.getElementById('filter-meals').value = '';
-    document.getElementById('filter-workouts').value = '';
-  }
-  
  
 }
 
