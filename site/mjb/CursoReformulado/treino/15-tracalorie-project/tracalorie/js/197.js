@@ -1,27 +1,28 @@
 /**
  * 
- * Set the totalCalories to localStorage
- * First at the constructor of CalorieTracker set the _totalCalories to Storage.getTotalCalories(0) we are gonna create
- * now Storage class behind the getCalorieLimit create a method getTotalCalories(defaultCalories = 0)
- * create a let totalCalories
- * then check if there is in localStorage the item with 'totalCalories' is iqual to null
- * if so set the totalCalories to defaultCalories
- * else set totalCalories to +localStorage.getItem('totalCalories');
- * and finaly return the totalCalories
- * now also create a method updateTotalCalories(calories)
- * then simply call localStorage.setItem('totalCalories', calories);
- * now whenever we add or remove a meal or a workout we need to call this method
- * so at the CalorieTracker when we add a meal after get the totalCalories we also need to Storage.updateTotalCalories(this._totalCalories) 
- * do the same for workout
- * also when remove a meal and when remove a workout
- * 
+ * Storage class
+ * Above the app class let's create a class Storage
+ * Inside create a static method getCalorieLimit(defaultLimit = 2000)
+ * create a let calorieLimit
+ * check if it is already at localstorage
+ * like localstorage.getItem('calorieLimit') if it is iqual to null set the calorieLimit to the defaultLimit
+ * else set the calorieLimit to whatever is in the localStorage
+ * calorieLimit = +localStorage.getItem('calorieLimit') the plus sign is to force as a number
+ * then just return calorieLimit
+ * Now let's create a setCalorieLimit
+ * to do so create a static method setCalorieLimit(calorieLimit)
+ * then just call localStorage.setItem('calorieLimit', calorieLimit)
+ * now we can simply call it at the constructor of CalorieTracker
+ * in _calorieLimit set it to Storage.getCalorieLimit();
+ * now at the setLimit all we have to do is add Storage.setCalorieLimit(calorieLimit)
+ * and finaly get out all the hardcoded values in the index.html related to the calories values
  * 
  * 
  */
 class CalorieTracker{
   constructor(){
     this._calorieLimit = Storage.getCalorieLimit();
-    this._totalCalories = Storage.getTotalCalories(0);
+    this._totalCalories = 0;
     this._meals = [];
     this._wokouts = [];
     this._displayCaloriesTotal();
@@ -35,7 +36,6 @@ class CalorieTracker{
   addMeal(meal){
     this._meals.push(meal);
     this._totalCalories += meal.calories;
-    Storage.updateTotalCalories(this._totalCalories);
     this._displayNewMeal(meal);
     this._render();
   }
@@ -43,7 +43,6 @@ class CalorieTracker{
   addWorkout(workout){
     this._wokouts.push(workout);
     this._totalCalories -= workout.calories;
-    Storage.updateTotalCalories(this._totalCalories);
     this._displayNewWorkout(workout);
     this._render();
   }
@@ -53,7 +52,6 @@ class CalorieTracker{
     if(index !== -1){
       const meal = this._meals[index];
       this._totalCalories -= meal.calories;
-      Storage.updateTotalCalories(this._totalCalories);
       this._meals.splice(index, 1);
       this._render();
     }
@@ -64,7 +62,6 @@ class CalorieTracker{
     if(index !== -1){
       const workout = this._wokouts[index];
       this._totalCalories += workout.calories;
-      Storage.updateTotalCalories(this._totalCalories);
       this._wokouts.splice(index, 1);
       this._render();
     }
@@ -215,20 +212,6 @@ class Storage {
 
   static setCalorieLimit(calorieLimit){
     localStorage.setItem('calorieLimit', calorieLimit);
-  }
-
-  static getTotalCalories(defaultCalories = 0){
-    let totalCalories;
-    if(localStorage.getItem('totalCalories') === null){
-      totalCalories = defaultCalories;
-    } else {
-      totalCalories = +localStorage.getItem('totalCalories');
-    }
-    return totalCalories;
-  }
-
-  static updateTotalCalories(calories){
-    localStorage.setItem('totalCalories', calories);
   }
 }
 
