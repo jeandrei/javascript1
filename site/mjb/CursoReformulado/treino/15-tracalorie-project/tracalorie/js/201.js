@@ -1,18 +1,16 @@
 /**
  * 
+ * Remove meal and workout from localStorage
+ * To do so go to the Storage class under saveMeal
+ * Create a static removeMeal(id)
+ * then create a const meals and get the meals from localStorage
+ * then do a meals forEach meal, index and if the meal.id === to the id do a meals.splice(index,1)
+ * then outside the foreach save in the localStorage
+ * localStorage.setItem('meals', JSON.stringfy(meals))
+ * do the same for workout
+ * now call this rith before the render at CalorieTracker removeMeal and removeWorkout
  * 
- * Clear storage items
- * First let's fix a bug
- * when we click at set daily limit it display a 2000 even if it is set to another value
- * to fix it at the and of CalorieTracker contructor just get the element id limit and set the value of it to this._calorieLimit;
- * now note that in the CalorieTracker we already have a reset that clears the UI
- * For clear the storage right under the workouts = [] array 
- * let's call a method Storage.clearAll() tha we are gona create
- * then at the end of our strorage class let's add it
- * create a method static clearAll
- * localStorage.removeItem('totalCalories')
- * localStorage.removeItem('meals')
- * localStorage.removeItem('workouts')
+ * 
  */
 class CalorieTracker{
   constructor(){
@@ -26,7 +24,6 @@ class CalorieTracker{
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
     this._displayCaloriesProgress();
-    document.getElementById('limit').value = this._calorieLimit;
   }
 
   addMeal(meal){
@@ -75,7 +72,6 @@ class CalorieTracker{
     this._totalCalories = 0;
     this._meals = [];
     this._wokouts = [];
-    Storage.clearAll();
     this._render();
   }
 
@@ -290,15 +286,6 @@ class Storage {
     localStorage.setItem('workouts', JSON.stringify(workouts));
   }
 
-  static clearAll(){
-    localStorage.removeItem('totalCalories');
-    localStorage.removeItem('meals');
-    localStorage.removeItem('workouts');
-    /*
-    if you want to clear the limit
-    localStorage.clear();
-    */
-  }
 }
 
 class App{

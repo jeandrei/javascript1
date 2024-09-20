@@ -1,32 +1,43 @@
 /**
  * 
+ * First let's create at the class storage the method getMeals() to get the meals from localStorage
+ * The method is basecally iqual to the getTotalCalories method
+ * create a let meals 
+ * check if in the localStorage the item 'meals' is iqual to null
+ * if so set meals to an empty array
+ * else  set meals to what is in localStorage getItem 'meals' don't forget to JSON.parse the values because it is an array
+ * then return the meals
+ * now let's create a method called saveMeals(meal)
+ * set a const meals and set it to what is in Storage.getMeals();
+ * then push the meal to the meals array
+ * then put it to localStorage
+ * localStorage.setItem('meals', JSON.stringfy(meals));
+ * Now at CalorieTracker saveMeal method we need to call the saveMeal that we have just created
+ * so right under we save the totalCalories call teh saveMeal(meal)
+ * Also we need to initialize the meas at the CalorieTracker now it is set to an empty array. Set it to Storage.getMeals()
+ * Now to display the item we need to create a public method under setLimit create loadItems
+ * it will load both meals and workouts but let's first create the meal part
+ * do a forEach at this._meals loop through each meal then call this._displayNewMeal(meal)
+ * then call the loadItems at the App class in the constructor under all the addEventListener
+ * now to clean the code let's create a method _loadEventListeners so that we can load all addEventListener.
+ * and then right under the constructor create this method and put all the addEventListeners on it
+ * now do the same for workout
  * 
- * Clear storage items
- * First let's fix a bug
- * when we click at set daily limit it display a 2000 even if it is set to another value
- * to fix it at the and of CalorieTracker contructor just get the element id limit and set the value of it to this._calorieLimit;
- * now note that in the CalorieTracker we already have a reset that clears the UI
- * For clear the storage right under the workouts = [] array 
- * let's call a method Storage.clearAll() tha we are gona create
- * then at the end of our strorage class let's add it
- * create a method static clearAll
- * localStorage.removeItem('totalCalories')
- * localStorage.removeItem('meals')
- * localStorage.removeItem('workouts')
+ * 
+ * 
  */
 class CalorieTracker{
   constructor(){
     this._calorieLimit = Storage.getCalorieLimit();
     this._totalCalories = Storage.getTotalCalories(0);
     this._meals = Storage.getMeals();
-    this._wokouts = Storage.getWorkouts();
+    this._wokouts = [];
     this._displayCaloriesTotal();
     this._displayCaloriesLimit();
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
     this._displayCaloriesProgress();
-    document.getElementById('limit').value = this._calorieLimit;
   }
 
   addMeal(meal){
@@ -42,7 +53,6 @@ class CalorieTracker{
     this._wokouts.push(workout);
     this._totalCalories -= workout.calories;
     Storage.updateTotalCalories(this._totalCalories);
-    Storage.saveWorkout(workout);
     this._displayNewWorkout(workout);
     this._render();
   }
@@ -52,9 +62,8 @@ class CalorieTracker{
     if(index !== -1){
       const meal = this._meals[index];
       this._totalCalories -= meal.calories;
-      Storage.updateTotalCalories(this._totalCalories);      
+      Storage.updateTotalCalories(this._totalCalories);
       this._meals.splice(index, 1);
-      Storage.removeMeal(id);
       this._render();
     }
   }
@@ -64,9 +73,8 @@ class CalorieTracker{
     if(index !== -1){
       const workout = this._wokouts[index];
       this._totalCalories += workout.calories;
-      Storage.updateTotalCalories(this._totalCalories);     
+      Storage.updateTotalCalories(this._totalCalories);
       this._wokouts.splice(index, 1);
-      Storage.removeWorkout(id);
       this._render();
     }
   }
@@ -75,7 +83,6 @@ class CalorieTracker{
     this._totalCalories = 0;
     this._meals = [];
     this._wokouts = [];
-    Storage.clearAll();
     this._render();
   }
 
@@ -88,7 +95,6 @@ class CalorieTracker{
 
   loadItems(){
     this._meals.forEach(meal => this._displayNewMeal(meal));
-    this._wokouts.forEach(workout => this._displayNewWorkout(workout));
   }
 
   _displayCaloriesTotal(){
@@ -254,51 +260,6 @@ class Storage {
     localStorage.setItem('meals', JSON.stringify(meals));
   }
 
-  static removeMeal(id){
-    const meals = Storage.getMeals();
-    meals.forEach((meal,index) => {
-      if(meal.id === id){
-        meals.splice(index, 1);
-      }
-    })
-    localStorage.setItem('meals', JSON.stringify(meals));
-  }
-
-  static getWorkouts(){
-    let workouts;
-    if(localStorage.getItem('workouts') === null){
-      workouts = [];
-    } else {
-      workouts = JSON.parse(localStorage.getItem('workouts'));
-    }
-    return workouts;
-  }
-
-  static saveWorkout(workout){
-    const workouts = Storage.getWorkouts();
-    workouts.push(workout);
-    localStorage.setItem('workouts', JSON.stringify(workouts));
-  }
-
-  static removeWorkout(id){
-    const workouts = Storage.getWorkouts();
-    workouts.forEach((workout,index) => {
-      if(workout.id === id){
-        workouts.splice(index, 1);
-      }
-    })
-    localStorage.setItem('workouts', JSON.stringify(workouts));
-  }
-
-  static clearAll(){
-    localStorage.removeItem('totalCalories');
-    localStorage.removeItem('meals');
-    localStorage.removeItem('workouts');
-    /*
-    if you want to clear the limit
-    localStorage.clear();
-    */
-  }
 }
 
 class App{
