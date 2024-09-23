@@ -1,7 +1,11 @@
-async function getUser() {
-  const response = await fetch('https://api.github.com/users/bradtraversy');
-  const data = await response.json();
-  console.log(data);
-}
-
-getUser();
+/**
+ * Lesson 
+ * Create async function getUser()
+ * then create a const response = fetch the url 'https://api.github.com/users/bradtraversy'
+ * then create a const data = the response.json
+ * then console log data
+ * 
+ * dont' forget to call getUser()
+ * 
+ * run it at the console node app.js
+ */
