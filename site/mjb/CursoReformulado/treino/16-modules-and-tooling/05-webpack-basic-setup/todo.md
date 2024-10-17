@@ -23,7 +23,7 @@
 - Before build the app let's create a sample of a model. In the src folder create a module message.js.
 - Inside create an object const message with id: 1 and text: 'Hello World'
 - Then export default message
-- Now in the src index.js let's inport it. import message from './message'.
+- Now in the src index.js let's import it. import message from './message'.
 - Now just console log message.
 - Now let's build our app.
 - in the root folder run - npm run build
