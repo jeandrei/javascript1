@@ -1,0 +1,78 @@
+# webpack tracalorie refector
+
+- We will use our webpack-starter to refactor our tracalore.
+- First create a new folder tracalorie-webpack
+- Copy everything from webpack-starter except the folder node-modules
+- Once we build the app the node-modules will be created
+- If present in the folder, remove the message.js and clear all lines of code in the index.js and rename it to app.js
+- When change the main file.js we need to update in a couple places.
+- One is the webpack-config.js in module.exports in entry update the file
+- Also in the package.json under main update to app.js
+- Update the name of the app in name set to tracalorie-webpack
+- Update the description "App to track calories, meals and workouts"
+- Now from the tracalorie app copy the folder webfonts to webpack src folder and then.
+- Clear our src/css/style.css
+- Replace the index.html with the index.html from tracalorie
+- In the html there a bundle of links we don't need because we are gonna import to our javascript, it is gonna be part of our bundle.
+- so in the index.html remove the css links and also the bootstrap.bundle.main.js and as when we build the app the link to our javascript app is included, we can remove the link to our app.js.
+- We maintain just the google font's links.
+- now install npm
+- npm i
+- it will create our node_modules folder and install all our dependencies
+- run the dev server.
+- npm run dev
+- it is gonna show our project but no css.
+- in the app.js let's import our css.
+- import './css/bootstrap.css';
+- import './css/style.css';
+- Now we should see some styles in the app.
+- Font awesome, the colapse and the modals are not working because we need the bootstrap and the javascript.
+- Stop the server control c
+- npm i bootstrap @fortawesome/fontawesome-free _NOTE it is fortawesome_
+- now at the top of our app.js let's import fontawesome
+- import '@fortawesome/fontawesome-free/js/all';
+- save and run the server again
+- npm run dev
+- The icons should display.
+- The modal and the colapse still don't work, we need to bring them.
+- Below the import of fontawesom
+- import { Modal, Collapse } from 'bootstrap'
+- Save and check if the modal and the colapse works.
+- Now we need to make it functional because all the functionality is camming from our classes.
+- Check if we stop the server and start again.
+- npm run build
+- all the content from bootstrap, fontawesome and our code is bundle in one single file the bundle.js in the dist folder.
+- And if you look at our index.html in the dist folder it is linked to our bundle.js.
+- Now delete the dist folder and run the server again
+- npm run dev
+- now grab all the code from the tracalorie app.js and paste at our src/app.js below the imports
+- We don't want all the code in a single file, that's why we are using webpack.
+- in the src folder create a file Tracker.js for our Tracker class.
+- Then copy entire CalorieTracker class to this file, it ends right above the Meal class.
+- Paste the code in the Tracker.js and at the bottom let's export it
+- export default CalorieTracker;
+- Save and close.
+- Create a file Item.js for the classes Meal and Workout.
+- Copy the classe Meal and Workout.
+- Paste in Item.js
+- At the bottom expor it.
+- export { Meal, Workout };
+- Now create a file Storage.js for our Storage class.
+- Copy the Storage class from the tracalorie and paste it at the Storage.js
+- At the bottom of the file export the class.
+- export default Storage;
+- Now at the app.js let's import those classes
+- As a good practice import before the css import.
+- import CalorieTracker from './Tracker';
+- import { Meal, Workout } from './Item';
+- As we don't use Storage anywhere in the app, we use it in the Tracker, that's where we need to impor it.
+- At Tracker.js up to the top.
+- import Storage from './Storage';
+- There some issue with the modal, it doesn't close.
+- To fix it at the app.js, in the end of the file in the code const modal = bootstrap.Modal.getInstance...
+- Change it to just Modal.getInstance...
+- We have the same issue with collapse.
+- Go to new Item and in the part of const bsColapse = new bootstrap.Collapse...
+- Change to new Collapse..
+- now to build
+- npm run build
