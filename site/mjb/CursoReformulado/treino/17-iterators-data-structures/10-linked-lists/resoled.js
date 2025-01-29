@@ -91,6 +91,7 @@ class LinkedList {
         previous = current;
         current = current.next;
       }
+       /*aqui basicamente pula um tipo seria previus.next, current, current.next elimina o current que é o indice */
       previous.next = current.next;
     }
 

@@ -51,12 +51,27 @@
  * then newNode.next = current 3
  * previous.next = newNode previous is 2 the next is 3
  * this._length++
+ * 
+ * 
+*    ** 300 200 100 10
+     * newNode = 500
+     * no while ele basicamente vai andando no array
+     * [previus=300,current=200]
+     * [previus=200,current=100]
+     * quando chega no indice
+     * newNode(500).next = 100
+     * previus(200).next = 500
+     * 300 200 500 100
+     * 
+     *    
+ * 
+ * 
  * now let's create a getAt(index) method
  * create a let current and set it to the this._head that way we go to the first element
  * create a let count and set it to zero
  * then do a while(current) that mean while there is a current wee go through all the nodes
  * until we find the index we want
- * check if count === to index becouse in the while 
+ * check if count === to index because in the while 
  * we will increment count if so console.log current._value
  * out of the if statemant 
  * increment count++
@@ -75,6 +90,7 @@
  * previous = current
  * than curren = curren.next
  * out of the while till inside of else if
+ * here basically it takes one node out look: previus.next, current, current.next remove current that is the index passed
  * previous.next = current.next
  * out of the else if
  *  this._length--
