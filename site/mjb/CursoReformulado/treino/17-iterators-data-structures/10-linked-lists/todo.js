@@ -1,7 +1,7 @@
 /**
  * Create a class Node and then the constructor(value)
- * stil in the constructor create the private properties
- * value = value
+ * stil in the constructor create the propertie
+ * this._value = value 
  * next = null
  * Now create a class LinkedList 
  * in the constructor create teh private properties
