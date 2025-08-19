@@ -1,8 +1,6 @@
+//IDEAS.JS
 const express = require('express');
-
-const port = 5000;
-
-const app = express();
+const router = express.Router();
 
 const ideas = [
     {
@@ -28,17 +26,14 @@ const ideas = [
     },   
 ];
 
-app.get('/', (req, res) => {
-    res.send({message: 'Welcome to the RandomIdeas API'});
-});
 
 //Get all ideas
-app.get('/api/ideas', (req, res) => {
+router.get('/', (req, res) => {
     res.json({ success: true, data: ideas });
 });
 
 //Get one idea +req.params.id é para converter de string para número
-app.get('/api/ideas/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const idea = ideas.find((idea) => idea.id === +req.params.id);
     
     if(!idea) {
@@ -46,6 +41,28 @@ app.get('/api/ideas/:id', (req, res) => {
     }
     res.json({ success: true, data: idea });
 });
+
+
+
+
+module.exports = router;
+
+
+//SERVER.JS
+const express = require('express');
+
+const port = 5000;
+
+const app = express();
+
+const ideasRouter = require('./routes/ideas');
+
+app.get('/', (req, res) => {
+    res.send({message: 'Welcome to the RandomIdeas API'});
+});
+
+app.use('/api/ideas', ideasRouter);
+
 
 app.listen(port, () => {
     console.log(`Server listining on port ${port}`);

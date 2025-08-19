@@ -1,83 +1,78 @@
-Create the Idea list component
-In components create a new file IdeaList.js 
-Create a class IdeaList
+Form components
+In the client/scr/components create a new file IdeaForm.js
+In the file create a class IdeaForm
 In the constructor
-this._ideaListEl = document.querySelector('#idea-list');
-this._ideas = [
-    {
-        id: 1,
-        text: 'Idea 1,
-        tag: 'Business',
-        username: 'John',
-        data: '02/01/2023'
-    },
-    {
-        id: 2,
-        text: 'Idea 2,
-        tag: 'Technology',
-        username: 'Jill',
-        data: '02/01/2023'
-    }
-];
+Select the modal like this._formModal = document.querySelector('#form-modal')
 
-Then under the cunstructor let's create a method render
-render()
-this._ideaListEl.innerHTML = this._ideas.map((idea) => {
-    return `
-    <div class="card">
-        <button class="delete"><i class="fas fa-times"></i></button>
-        <h3>
-        Positive NewsLetter, a newsletter that only shares positive,
-        uplifting news
-        </h3>
-        <p class="tag tag-technology">TECHNOLOGY</p>
-        <p>
-        Posted on <span class="date">January 1, 2022</span> by
-        <span class="author">Tony Stark</span>
-        </p>
+now after the constructor
+create a function render
+then set this._formModal innerHtml to the form code below
+
+<form id="idea-form">
+    <div class="form-control">
+    <label for="idea-text">Enter a Username</label>
+    <input type="text" name="username" id="username" />
     </div>
-    `;
-}).join('');
-we get the card from the index.html 
-delete in the index all the cards
-now at the end of the IdeaList export the IdeaList
+    <div class="form-control">
+    <label for="idea-text">What's Your Idea?</label>
+    <textarea name="text" id="idea-text"></textarea>
+    </div>
+    <div class="form-control">
+    <label for="tag">Tag</label>
+    <input type="text" name="tag" id="tag" />
+    </div>
+    <button class="btn" type="submit" id="submit">Submit</button>
+</form>
 
-export default IdeaList;
+now at the end export the class IdeaForm
+export default IdeaForm
+Then in the Index.js import it
+import IdeaForm from './components/IdeaForm';
+Then after the modal initialize it
+const ideaForm = new IdeaForm();
+Then render it
+ideaForm.render();
 
-then in the index.js let's require it
-then in the index.js let's initialize it
-const ideaList = new IdeaList();
-then render it
-ideaList.render();
-Now in render of the ideaList update the values from the data like ${idea.text}
-Now let's handle the color of the tags
-Note that we have classes in the css for tags that matches wit our classes like
+Now let's deal with the submit
+in the IdeaForm.js in the constructor
+this._form = document.querySelector('#idea-form');
+Now let's create an eventListener 
+After de constructor
+addEventListeners(){
+    this._form.addEventListener('submit', this.handleSubmit.bind(this));
+}
 
-        <p class="tag tag-technology
+in the IdeaForm.js move the lines
+this._form = document.querySelector('#idea-form'); to the bottom of the render function
+also add the 
+this.addEventListeners();
 
-so in the IdeaList.js in the render
-First let's create a set of valid tags
-After the array of ideas
-this._validTags = new Set();
-this._validTags.add('technology');
-this._validTags.add('software');
-this._validTags.add('business');
-this._validTags.add('education');
-this._validTags.add('health');
-this._validTags.add('inventions');
+now before the render let's create the method handelSubmit();
 
-Now above render let's create a getTagClass(tag) method
-    tag = tag.toLowerCase()
-    let tagClass = '';
-    Then check if the tag passed is in the set
-    if(this._validTags.has(tag)){
-        tagClass = `tag-${tag}`;
-    } else {
-        tagClass = '';
-    }
-    return tagClass;
-Now in the render before the return
-const tagClass = this.getTagClass(idea.tag);
-and in the class="tag ${tagClass}"
+handleSubmit(e) {
+    e.preventDefault();
+    console.log('SUBMIT');
+}
 
+now check in the web browser if it console log submit
+remove the console log
+create a const idea = {
+    text: this._form.elements.text.value,
+    tag: this._form.elements.tag.value,
+    username: this._form.elements.username.value
+}
+
+then console log idea to see if it works
+Submit something and check if it console in the browser
+now after the console log let's clear the fields
+this._form.elements.text.value = '';
+this._form.elements.tag.value = '';
+this._form.elements.username.value = '';
+
+Now to close the modal after submit
+just add 
+document.dispatchEvent(new Event('closemodal'));
+Then in the Modal.js in the addEventListeners
+just add
+document.addEventListener('closemodal', () => this.close());
 

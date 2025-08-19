@@ -1,41 +1,17 @@
-Go to the back end routers in the ideas.js
-Go to the router.delete
-We're gonna check if the user can delete the idea
-befor the await
-const idea = await Idea.findById(req.params.id);
-if(idea.username ===  req.body.username){
-    //then we procede with the delete
-    await Idea.findByIdAndDelete(req.params.id);
-    res.json({ success: true, data: {}});
-} else {
-    res.status(403).json({ success: false, error: 'You are not authorized to delete this resource' });
-}  
-
-Do the same thing for update
-
-Vai ficar assim
-try {
-        const idea = await Idea.findById(req.params.id);
-        if(idea.username ===  req.body.username){
-             const updateIdea = await Idea.findByIdAndUpdate(req.params.id,
-            {
-                $set: {
-                    text: req.body.text,
-                    tag: req.body.tag
-                },
-            },
-            { new: true }
-            );    
-            return res.json({ success: true, data: updateIdea });        
-        } 
-            
-        res.status(403).json({ success: false, error: 'You are not authorized to update this resource' });
-          
-} catch (error) {
-    res.status(500).json({success: false, error: 'Something went wrong'});
+Form validation
+Jump to IdeaForm.js
+Go to handleSubmit
+We gonna check for all the fields
+Right after the e.preventDefault
+if(!this._form.elements.text.value || !this._form.elements.tag.value || !this._form.elements.username.value){
+    alert('Please enter all fields');
+    return;
 }
+Then after the validation, let's save the user to local storage
+localStorage.setItem('username', this._form.elements.username.value);
 
-Restart the back end server
+Then after we clear the fields render the form again
+this.render();
 
-Com o postman tente fazer um update com e sem o username
-o mesmo com o delete
+Then to display the user go down to the template and in the user input let's put a value 
+value="${localStorage.getItem('username') ? localStorage.getItem('username') : ''}"

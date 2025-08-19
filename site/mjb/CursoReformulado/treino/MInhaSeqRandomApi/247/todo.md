@@ -24,7 +24,7 @@
 
 /*
 install nodemon npm i -D nodemon
-//in the package.json create a new script dev to run the command nodemon server.js 
+in the package.json create a new script dev to run the command nodemon server.js 
 create a folder routes
 inside the folder create a fule called ideas.js
 in the ideas.js
@@ -40,4 +40,18 @@ now jump to the server.js and right behind the app.get('/')
 create a const ideasRouter ad set it to require('./routes/ideas)
 now set the middleware 
 app.use('/api/ideas', ideasRouter);
+
+add an idea
+first in the server we need to add parser middleware that will help us to access the data from the req.body
+app.use(express.json()) and app.use(express.urlencoded({extended: false}));
+create a const idea as a json object with
+    id: ideas.length + 1,
+    text: req.body.text,
+    tag: req.body.tag,
+    username: req.body.username,
+    date: new Date().toISOString().slice(0, 10)
+then push the idea to the ideas array
+and finally res.json success true and data the idea
+create a router.post
+
 */

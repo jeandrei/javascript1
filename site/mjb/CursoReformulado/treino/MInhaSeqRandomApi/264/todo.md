@@ -25,6 +25,10 @@ The delete in the server is ok
 Now in the front-end
 
 Now in the IdeaList.js
+first add the data-id in the card so that we can get the id with the dataset.id
+
+<div class="card" data-id="${idea._id}">
+
 We need to have an eventListener on the delete button
 
 Before the getIdeas method let's create a addEventListeners method

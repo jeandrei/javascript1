@@ -1,36 +1,49 @@
-FRONT END
+Lets first set up our modal
+In the client/index.js
+Create a const modal = document.querySelector('#modal');
+Also the modalBtn = document.querySelector('#modal-btn');
 
-First create our static folder with express
-In the root Create a folder public
-Now in the server.js let's create a middleware so that the public folder will be static 
-and we can put html, css files in that folder
-on the top server.js let's create a const path require('path')
-then below the const app let's bring the middleware
-app.use(express.static(path.join(__dirname, 'public')));
-then in the public folder just create a index.html file
-Create the html structure
-Save it
-Run the server and check for localhost 5000 it shuld load the index.html
-Now delete the index.html
-And create in the root create a folder client
-Copy the contntent of webpack-starter we made befor in the client folder
-now open another console and go to the client folder
-run npm i
-to install all dependencies
-no let's change the directory folder dist from webpack.config.js in output and devServer
-change to ../public
-now build the files
-npm run build
-Now delete client/src/message.js we don't need that
-Now go to client/src/index.js remove the import message also the console.log
-Now get the files from randomIdeas-theme index and css and replace on src/index.js and css/style.css
-In index.htm remove the link to style.css because we are importing it in the index.js
-Also remove the fontawesome from index.html
-Now in the client the npm where we run the webpack
-Install fontawesome
-npm i @fortawesome/fontawesome-free
-Check if it is installed in client/package.json
-Now in the client/src/index.js let's import it
-Befor the style.css import 
-import '@fortawesome/fontawesome-free/css/all.css'
-You should see the plus button in the top left
+create a function open that just get the modal.style.display set to block
+
+now create another function close then set the modal.style.display to none
+
+Then create our eventlisteners
+modalBtn.addEventListener('click', open);
+
+window.addEventListener('click', outsideClick);
+then below the function close let's create this function
+function outsideClick(e)
+if (e.target === modal) then call close();
+
+Now in the src folder create another folder components
+Inside create a file Modal.js
+In the Modal.js
+Create a class Modal
+It has a constructor and inside the constuctor we will set our querySelectors
+Grab the selectors from the index.js and past inside the consturctor
+But instead o const modal, both will be the property of the class
+this._modal and this._modalBtn
+
+Also copy the functions and bring to the Modal class
+put the functions below the constructor
+turn the functions to methods of the class
+like open() and inside this._modal.style.display
+
+Rigth before open create a eventListener
+addEventListeners(){
+    this._modal.btn.addEventListener('click', this.open.bind(this));
+    window.addEventListener('click', this.outsideClick.bind(this));
+}
+
+then in the constructor at the last line let's call the eventListener
+this.addEventListener();
+
+
+then at the end of the file let's export the Modal;
+export default Modal;
+Now go to index.js, get rid of all the stufs, let just the import
+and above the import css import Modal
+import Modal from './components/Modal';
+then just instantiate it 
+const modal = new Modal();
+Save and check if the modal works

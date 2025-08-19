@@ -1,9 +1,13 @@
+//create const express
 const express = require('express');
 
-const port = 5000;
-
+//create const app express
 const app = express();
 
+//create const port
+const port = 5000;
+
+//bring the const ideas with json format
 const ideas = [
     {
         id: 1,
@@ -29,24 +33,22 @@ const ideas = [
 ];
 
 app.get('/', (req, res) => {
-    res.send({message: 'Welcome to the RandomIdeas API'});
+    res.json({success: true, data: 'This is the root page'});
 });
 
-//Get all ideas
 app.get('/api/ideas', (req, res) => {
-    res.json({ success: true, data: ideas });
+    res.json({success: true, data: ideas});
 });
 
-//Get one idea +req.params.id é para converter de string para número
 app.get('/api/ideas/:id', (req, res) => {
-    const idea = ideas.find((idea) => idea.id === +req.params.id);
-    
-    if(!idea) {
-        return res.status(404).json({ success: false, error: 'Resource not found'});
+    const id = parseInt(req.params.id);
+    const idea = ideas.find((idea) => idea.id === id);
+    if(!idea){
+        return res.status(404).json({success: false, data: 'Resource not found!'});
     }
-    res.json({ success: true, data: idea });
+    res.json({success: true, data: idea});
 });
 
 app.listen(port, () => {
-    console.log(`Server listining on port ${port}`);
+    console.log(`App running on port ${port}`);
 });

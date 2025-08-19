@@ -1,45 +1,59 @@
-In the index.js we don't need to have modal = new Modal()
-also we don't need to hava ideaList = new IdeaList()
-Stop the back-end server
-so just let this like
-new Modal();
-new IdeaList();
-and run it npm start
-that way it wont keep reloading because of the nodemon
-Now we want to submit the form and reach out the ideasApi back-end
-So in the ideas.Api.js right after the getIdeas methos
-Create a method createIdea(data) {
-    return axios.post(this._apiUrl, data);
+In the IdeaList.js set the ideas array to an ampty array
+We are gonna create a class that we are gonna dedicate to reaching out to our API and getting ideas, creating, deleting etc
+In client/src create a new folder called services 
+Inside create a new file ideasApi.js
+Inside create a class IdeasApi
+in the constructor just create a property
+this._apiUrl = 'http://localhost:5000/api/ideas'
+
+Then create a method getIdeas
+Stop the client server and install axios
+npm i axios
+then run dev again
+Now in the ideasApi.js before the class let's import axios
+import axios from 'axios';
+And in the getIdeas() just return axios.get(this._apiUrl);
+and at the end export
+export default new IdeasApi();
+
+Now in the IdeaList.js in the top import it
+import IdeasApi from '../services/ideasApi';
+in IdeaList.js in the constructor
+load the ideas
+below the this._ideas = [] array
+this.getIdeas();
+Then before the getTagClass create the method getIdeas
+must be async because it return from axios and it is a promise
+async getIdeas(){
+    try {
+        const res = await IdeasApi.getIdeas();
+        this._ideas = res.data.data because the return of axios is always data and as in router.get we are returning data it must be data.data
+        console.log(this._ideas);
+    } catch (error){
+        console.log(error);
+    }
 }
-Now in the IdeaForm.js
-Let's bring the ideasApi
-import IdeasApi from "../services/ideasApi";
-Then where we create our idea handleSubmit
-turn it to async
-then in the
-const idea = {
-get rid of console.log
-and create a
-check if the const idea is uppercase or not first because I copy it wrong
-const newIdea = await IdeasApi.createIdea(idea);
-Add an idea
-Reload the page to see the new idea
-Now to refresh right after submit
-in the IdeaLis.js
-We will hava a method that will add a idea to the list
-So right under getIdeas
-Create the method
-addIdeaToList(idea){
-    this._ideas.push(idea);
-    this.render();
-};
-Now in the IdeaForm.js
-Bring the Idea list
-import IdeaList from "./IdeaList";
-then in the constructor let's instantiate it
-this._ideaList = new IdeaList();
-in the handleSubmit method
-Right after const newIdea = await
-this._ideaList.addIdeaToList(newIdea.data.data);
 
+To avoid CORS policy
+In the back end we need to enable cors access to our client
+Go to back end server.js
+Stop the back end
+install the cors
+npm i cors
+run the server again
+now in the server.js after the const express
+const cors = require('cors');
+Then under the app.use(express.urlencoded)
+app.use(cors({
+    origin: ['http://localhost:500', 'http://localhost:3000'],
+    credentials: true
+}));
 
+Now in the index.js we are rendering the lis befor we even get it from de database, to fix that 
+go to the index.js and move 
+ideaList.render();
+to the IdeaList.js
+Right after we get the Ideas
+That's it in the getIdeas Method
+Right below this._ideas = res.data.data
+this.render();

@@ -55,13 +55,13 @@ const port = 5000;
 
 const app = express();
 
-const ideasRouter = require('./routes/ideas');
+const router = require('./routes/ideas');
 
 app.get('/', (req, res) => {
     res.send({message: 'Welcome to the RandomIdeas API'});
 });
 
-app.use('/api/ideas', ideasRouter);
+app.use('/api/ideas', router);
 
 
 app.listen(port, () => {
